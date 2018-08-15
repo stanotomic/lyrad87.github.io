@@ -1,6 +1,5 @@
 var apiKey = "6872c8e6fc394998a17593f3e25604f2", // production
 a8GroupId = "1880341",
-
 ;
 
 (function(){ // smooth scrolling pants
