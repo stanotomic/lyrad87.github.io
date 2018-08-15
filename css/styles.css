@@ -69,12 +69,12 @@ main > .tagline {
 	width: 2.65rem;
 	height: 2.65rem;
 }
-.container {
+body > .container {
   display: flex;
   flex-fow: row wrap;
 }
 
-.item {
+body > .item {
   flex: 1 auto;
 }
 
