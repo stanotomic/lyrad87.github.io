@@ -69,3 +69,34 @@ main > .tagline {
 	width: 2.65rem;
 	height: 2.65rem;
 }
+.container {
+  display: flex;
+  flex-fow: row wrap;
+}
+
+.item {
+  flex: 1 auto;
+}
+
+/* For display purposes */
+
+body {
+  font-family: sans-serif;
+}
+
+.container {
+  /* for display purposes*/
+  padding: 1rem;
+  margin: 1rem;
+  border: 1px solid #ccc;
+}
+
+.item {
+   /* for display purposes*/
+  padding: 1rem;
+  margin: 1rem;
+  background: #efefef;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
