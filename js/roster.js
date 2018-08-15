@@ -3,7 +3,7 @@
 var roster = [];
 
 $.when(
-	// get Reign of Iron roster
+	// get A8 roster
 	$.ajax({
 		url: "https://www.bungie.net/platform/GroupV2/" + a8GroupId + "/Members/",
 		headers: {
