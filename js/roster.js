@@ -122,15 +122,6 @@ function listMembers(rsp) {
             '<td><a href="https://www.bungie.net/en/Profile/254/' + memberId + '/' + name + '">Click</a></td>' // Bungie Profile 
         );
 
-			if (rsp[i].exalted) {
-				member.addClass('exalted')
-				.attr({
-					'href': '/player.html?bungieId=' + memberId + '&destinyId=' + destinyId + '&joined=' + joined + '&rank=' + rank + '&exalted=true'
-				})
-				.find('.member-name').find('h3')
-				.html(name + ' &nbsp;<span class="gold" title="Exalted">&epsilon;</span>');
-			}
-
 			member.appendTo(list);
 
 			// indicate online/offline status
