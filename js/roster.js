@@ -136,7 +136,7 @@ function listMembers(rsp) {
         $('#status-' + memberId).text('Offline').removeClass('online');
       }
 
-      sortMembers(joined); // sort members by join date
+      sortMembers(online); // sort members by join date
 
     }
 
