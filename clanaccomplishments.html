@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$("button").click(function() {
+					var bungieAPIkey = '0a11942f318647978979f13ad8aa53ee';
+					var memberIds = [];
+					var clanPvPKills = 0;
+					var clanPvEKills = 0;
+					var clanPvESuicides = 0;
+
+					$.ajax({
+						//get member infos from our clan
+						url: 'https://www.bungie.net/Platform/GroupV2/1801684/Members/',
+						headers: {'X-API-KEY': bungieAPIkey },
+						method: 'GET',
+						success: function(data) {
+							//collect id strings from every clan member
+							$.each(data.Response.results, function(index, value) {
+								memberIds.push(value.destinyUserInfo.membershipId);
+							});
+
+							//iterate over every member
+							$.each(memberIds, function(index, memberid) {
+								$.ajax({
+									url: 'https://www.bungie.net/Platform/Destiny2/2/Account/' + memberid + '/Stats/',
+									headers: {'X-API-KEY': bungieAPIkey },
+									method: 'GET',
+									success: function(data) {
+										clanPvPKills = clanPvPKills + data.Response.mergedAllCharacters.results.allPvP.allTime.kills.basic.value;
+										clanPvEKills = clanPvEKills + data.Response.mergedAllCharacters.results.allPvE.allTime.kills.basic.value;
+										clanPvESuicides = clanPvESuicides + data.Response.mergedAllCharacters.results.allPvE.allTime.suicides.basic.value;
+										$('#info').html(
+												  'clan pvp kills: ' + clanPvPKills 
+											+ '<br>clan pve kills: ' + clanPvEKills
+											+ '<br>clan pve suicides: ' + clanPvESuicides
+										);
+									}
+								});
+							});
+						}
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<button>fetch clan data</button><br><div id="info"></div>
+	</body>
+</html>
