@@ -8,7 +8,9 @@
 					var bungieAPIkey = '0a11942f318647978979f13ad8aa53ee';
 					var memberIds = [];
 					var clanPvPKills = 0;
+					var clanPvPSecondsPlayed = 0;
 					var clanPvEKills = 0;
+					var clanPvEDeaths = 0;
 					var clanPvESuicides = 0;
 					var clanPvEHeroicPublicEventsCompleted = 0;
 					var clanPvEAdventuresCompleted = 0;
@@ -33,18 +35,22 @@
 									method: 'GET',
 									success: function(data) {
 										clanPvPKills = clanPvPKills + data.Response.mergedAllCharacters.results.allPvP.allTime.kills.basic.value;
+										clanPvPSecondsPlayed = clanPvPSecondsPlayed + data.Response.mergedAllCharacters.results.allPvP.allTime.secondsPlayed.basic.value;
 										clanPvEKills = clanPvEKills + data.Response.mergedAllCharacters.results.allPvE.allTime.kills.basic.value;
+										clanPvEDeaths = clanPvEDeaths + data.Response.mergedAllCharacters.results.allPvE.allTime.deaths.basic.value;
 										clanPvESuicides = clanPvESuicides + data.Response.mergedAllCharacters.results.allPvE.allTime.suicides.basic.value;
 										clanPvEHeroicPublicEventsCompleted = clanPvEHeroicPublicEventsCompleted + data.Response.mergedAllCharacters.results.allPvE.allTime.heroicPublicEventsCompleted.basic.value;
 										clanPvEAdventuresCompleted = clanPvEAdventuresCompleted + data.Response.mergedAllCharacters.results.allPvE.allTime.adventuresCompleted.basic.value;
 										clanPvESecondsPlayed = clanPvESecondsPlayed + data.Response.mergedAllCharacters.results.allPvE.allTime.secondsPlayed.basic.value;
 										$('#info').html(
-												  'clan pvp kills: ' + clanPvPKills 
+												  'clan pvp kills: ' + clanPvPKills
+											+ '<br>clan pvp seconds played: ' + clanPvPSecondsPlayed	  
 											+ '<br>clan pve kills: ' + clanPvEKills
+											+ '<br>clan pve deaths: ' + clanPvEDeaths
 											+ '<br>clan pve suicides: ' + clanPvESuicides
 											+ '<br>clan pve heroic public events completed: ' + clanPvEHeroicPublicEventsCompleted
 											+ '<br>clan pve adventures completed: ' + clanPvEAdventuresCompleted
-											+ '<br>clan seconds played: ' + clanPvESecondsPlayed
+											+ '<br>clan pve seconds played: ' + clanPvESecondsPlayed
 										);
 									}
 								});
