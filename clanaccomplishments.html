@@ -10,6 +10,9 @@
 					var clanPvPKills = 0;
 					var clanPvEKills = 0;
 					var clanPvESuicides = 0;
+					var clanPvEHeroicPublicEventsCompleted = 0;
+					var clanPvEAdventuresCompleted = 0;
+					var clanPvESecondsPlayed = 0;
 
 					$.ajax({
 						//get member infos from our clan
@@ -32,10 +35,16 @@
 										clanPvPKills = clanPvPKills + data.Response.mergedAllCharacters.results.allPvP.allTime.kills.basic.value;
 										clanPvEKills = clanPvEKills + data.Response.mergedAllCharacters.results.allPvE.allTime.kills.basic.value;
 										clanPvESuicides = clanPvESuicides + data.Response.mergedAllCharacters.results.allPvE.allTime.suicides.basic.value;
+										clanPvEHeroicPublicEventsCompleted = clanPvEHeroicPublicEventsCompleted + data.Response.mergedAllCharacters.results.allPvE.allTime.heroicPublicEventsCompleted.basic.value;
+										clanPvEAdventuresCompleted = clanPvEAdventuresCompleted + data.Response.mergedAllCharacters.results.allPvE.allTime.adventuresCompleted.basic.value;
+										clanPvESecondsPlayed = clanPvESecondsPlayed + data.Response.mergedAllCharacters.results.allPvE.allTime.secondsPlayed.basic.value;
 										$('#info').html(
 												  'clan pvp kills: ' + clanPvPKills 
 											+ '<br>clan pve kills: ' + clanPvEKills
 											+ '<br>clan pve suicides: ' + clanPvESuicides
+											+ '<br>clan pve heroic public events completed: ' + clanPvEHeroicPublicEventsCompleted
+											+ '<br>clan pve adventures completed: ' + clanPvEAdventuresCompleted
+											+ '<br>clan seconds played: ' + clanPvESecondsPlayed
 										);
 									}
 								});
