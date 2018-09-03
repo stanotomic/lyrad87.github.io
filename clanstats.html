@@ -12,7 +12,7 @@
 					var clanPvEKills = 0;
 					var clanPvEDeaths = 0;
 					var clanPvESuicides = 0;
-					var clanPvEHeroicPublicEventsCompleted = 0;
+					var clanPvEHPECompleted = 0;
 					var clanPvEAdventuresCompleted = 0;
 					var clanPvESecondsPlayed = 0;
 
@@ -39,7 +39,7 @@
 										clanPvEKills = clanPvEKills + data.Response.mergedAllCharacters.results.allPvE.allTime.kills.basic.value;
 										clanPvEDeaths = clanPvEDeaths + data.Response.mergedAllCharacters.results.allPvE.allTime.deaths.basic.value;
 										clanPvESuicides = clanPvESuicides + data.Response.mergedAllCharacters.results.allPvE.allTime.suicides.basic.value;
-										clanPvEHeroicPublicEventsCompleted = clanPvEHeroicPublicEventsCompleted + data.Response.mergedAllCharacters.results.allPvE.allTime.heroicPublicEventsCompleted.basic.value;
+										clanPvEHPECompleted = clanPvEHPECompleted + data.Response.mergedAllCharacters.results.allPvE.allTime.heroicPublicEventsCompleted.basic.value;
 										clanPvEAdventuresCompleted = clanPvEAdventuresCompleted + data.Response.mergedAllCharacters.results.allPvE.allTime.adventuresCompleted.basic.value;
 										clanPvESecondsPlayed = clanPvESecondsPlayed + data.Response.mergedAllCharacters.results.allPvE.allTime.secondsPlayed.basic.value;
 										$('#info').html(
@@ -48,7 +48,7 @@
 											+ '<br>clan pve kills: ' + clanPvEKills
 											+ '<br>clan pve deaths: ' + clanPvEDeaths
 											+ '<br>clan pve suicides: ' + clanPvESuicides
-											+ '<br>clan pve heroic public events completed: ' + clanPvEHeroicPublicEventsCompleted
+											+ '<br>clan pve heroic public events completed: ' + clanPvEHPECompleted
 											+ '<br>clan pve adventures completed: ' + clanPvEAdventuresCompleted
 											+ '<br>clan pve seconds played: ' + clanPvESecondsPlayed
 										);
