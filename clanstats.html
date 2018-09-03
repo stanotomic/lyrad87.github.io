@@ -9,6 +9,7 @@
 					var memberIds = [];
 					var clanPvPKills = 0;
 					var clanPvPSecondsPlayed = 0;
+					var clanPvPGamesWon = 0;
 					var clanPvEKills = 0;
 					var clanPvEDeaths = 0;
 					var clanPvESuicides = 0;
@@ -36,6 +37,7 @@
 									success: function(data) {
 										clanPvPKills = clanPvPKills + data.Response.mergedAllCharacters.results.allPvP.allTime.kills.basic.value;
 										clanPvPSecondsPlayed = clanPvPSecondsPlayed + data.Response.mergedAllCharacters.results.allPvP.allTime.secondsPlayed.basic.value;
+										clanPvPGamesWon = clanPvPGamesWon + data.Response.mergedAllCharacters.results.allPvP.allTime.activitiesWon.basic.value;
 										clanPvEKills = clanPvEKills + data.Response.mergedAllCharacters.results.allPvE.allTime.kills.basic.value;
 										clanPvEDeaths = clanPvEDeaths + data.Response.mergedAllCharacters.results.allPvE.allTime.deaths.basic.value;
 										clanPvESuicides = clanPvESuicides + data.Response.mergedAllCharacters.results.allPvE.allTime.suicides.basic.value;
@@ -44,7 +46,8 @@
 										clanPvESecondsPlayed = clanPvESecondsPlayed + data.Response.mergedAllCharacters.results.allPvE.allTime.secondsPlayed.basic.value;
 										$('#info').html(
 												  'clan pvp kills: ' + clanPvPKills
-											+ '<br>clan pvp seconds played: ' + clanPvPSecondsPlayed	  
+											+ '<br>clan pvp seconds played: ' + clanPvPSecondsPlayed
+											+ '<br>clan pvp games won: ' + clanPvPGamesWon	  
 											+ '<br>clan pve kills: ' + clanPvEKills
 											+ '<br>clan pve deaths: ' + clanPvEDeaths
 											+ '<br>clan pve suicides: ' + clanPvESuicides
