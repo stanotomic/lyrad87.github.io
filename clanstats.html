@@ -4,66 +4,114 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 		<script>
+			
+
 			$(document).ready(function() {
-					var bungieAPIkey = '0a11942f318647978979f13ad8aa53ee';
-					var memberIds = [];
-					var clanPvPKills = 0;
-					var clanPvPDeaths = 0;
-					var clanPvPGamesWon = 0;
-					var clanPvPSecondsPlayed = 0;
-					var clanPvEKills = 0;
-					var clanPvEDeaths = 0;
-					var clanPvESuicides = 0;
-					var clanPvEHPECompleted = 0;
-					var clanPvEAdventuresCompleted = 0;
-					var clanPvESecondsPlayed = 0;
+			  var bungieAPIkey = '0a11942f318647978979f13ad8aa53ee';
 
-					$.ajax({
-						//get member infos from our clan
-						url: 'https://www.bungie.net/Platform/GroupV2/1801684/Members/',
-						headers: {'X-API-KEY': bungieAPIkey },
-						method: 'GET',
-						success: function(data) {
-							//collect id strings from every clan member
-							$.each(data.Response.results, function(index, value) {
-								memberIds.push(value.destinyUserInfo.membershipId);
-							});
+			  var clan = {};
+			  clan.memberIds = [];
+			  clan.memberCount = 0;
+			  clan.membersFetched = 0;
 
-							//iterate over every member
-							$.each(memberIds, function(index, memberid) {
-								$.ajax({
-									url: 'https://www.bungie.net/Platform/Destiny2/2/Account/' + memberid + '/Stats/',
-									headers: {'X-API-KEY': bungieAPIkey },
-									method: 'GET',
-									success: function(data) {
-										clanPvPKills = clanPvPKills + data.Response.mergedAllCharacters.results.allPvP.allTime.kills.basic.value;
-										clanPvPDeaths = clanPvPDeaths + data.Response.mergedAllCharacters.results.allPvP.allTime.deaths.basic.value;
-										clanPvPGamesWon = clanPvPGamesWon + data.Response.mergedAllCharacters.results.allPvP.allTime.activitiesWon.basic.value;
-										clanPvPSecondsPlayed = clanPvPSecondsPlayed + data.Response.mergedAllCharacters.results.allPvP.allTime.secondsPlayed.basic.value;
-										clanPvEKills = clanPvEKills + data.Response.mergedAllCharacters.results.allPvE.allTime.kills.basic.value;
-										clanPvEDeaths = clanPvEDeaths + data.Response.mergedAllCharacters.results.allPvE.allTime.deaths.basic.value;
-										clanPvESuicides = clanPvESuicides + data.Response.mergedAllCharacters.results.allPvE.allTime.suicides.basic.value;
-										clanPvEHPECompleted = clanPvEHPECompleted + data.Response.mergedAllCharacters.results.allPvE.allTime.heroicPublicEventsCompleted.basic.value;
-										clanPvEAdventuresCompleted = clanPvEAdventuresCompleted + data.Response.mergedAllCharacters.results.allPvE.allTime.adventuresCompleted.basic.value;
-										clanPvESecondsPlayed = clanPvESecondsPlayed + data.Response.mergedAllCharacters.results.allPvE.allTime.secondsPlayed.basic.value;
-										$('#info').html(
-												  'clan pvp kills: ' + (clanPvPKills).toLocaleString('en')
-											+ '<br>clan pvp deaths: ' + (clanPvPDeaths).toLocaleString('en')	  
-											+ '<br>clan pvp games won: ' + (clanPvPGamesWon).toLocaleString('en')
-											+ '<br>clan pvp played: ' + Math.round(moment.duration(clanPvPSecondsPlayed, 'seconds').asDays()) + " days"
-											+ '<br><br>clan pve kills: ' + (clanPvEKills).toLocaleString('en')
-											+ '<br>clan pve deaths: ' + (clanPvEDeaths).toLocaleString('en')
-											+ '<br>clan pve suicides: ' + (clanPvESuicides).toLocaleString('en')
-											+ '<br>clan pve heroic public events completed: ' + (clanPvEHPECompleted).toLocaleString('en')
-											+ '<br>clan pve adventures completed: ' + (clanPvEAdventuresCompleted).toLocaleString('en')
-											+ '<br>clan pve played: ' + Math.round(moment.duration(clanPvESecondsPlayed, 'seconds').asDays()) + " days"
-										);
-									}
-								});
-							});
-						}
-					});
+			  var CharStatsDataLocations = {};
+
+			  CharStatsDataLocations.pvpKills = 'Response.mergedAllCharacters.results.allPvP.allTime.kills.basic.value';
+			  CharStatsDataLocations.pvpDeaths = 'Response.mergedAllCharacters.results.allPvP.allTime.deaths.basic.value';
+			  CharStatsDataLocations.pvpWon = 'Response.mergedAllCharacters.results.allPvP.allTime.activitiesWon.basic.value';
+			  CharStatsDataLocations.pvpSuicides = 'Response.mergedAllCharacters.results.allPvP.allTime.suicides.basic.value';
+			  CharStatsDataLocations.pvpSeconds = 'Response.mergedAllCharacters.results.allPvP.allTime.secondsPlayed.basic.value';
+
+			  CharStatsDataLocations.pveKills = 'Response.mergedAllCharacters.results.allPvE.allTime.kills.basic.value';
+			  CharStatsDataLocations.pveDeaths = 'Response.mergedAllCharacters.results.allPvE.allTime.deaths.basic.value';
+			  CharStatsDataLocations.pveSuicides = 'Response.mergedAllCharacters.results.allPvE.allTime.suicides.basic.value';
+			  CharStatsDataLocations.pveHPE = 'Response.mergedAllCharacters.results.allPvE.allTime.heroicPublicEventsCompleted.basic.value';
+			  CharStatsDataLocations.pveAdventures = 'Response.mergedAllCharacters.results.allPvE.allTime.adventuresCompleted.basic.value';
+			  CharStatsDataLocations.pveSeconds = 'Response.mergedAllCharacters.results.allPvE.allTime.secondsPlayed.basic.value';
+
+
+
+			  $.ajax({
+			    //get member infos from our clan
+			    url: 'https://www.bungie.net/Platform/GroupV2/1801684/Members/',
+			    headers: {
+			      'X-API-KEY': bungieAPIkey
+			    },
+			    method: 'GET',
+
+			  }).done(
+			    function(data) {
+			      //collect id strings from every clan member
+			      $.each(data.Response.results, function(index, value) {
+				clan.memberIds.push(value.destinyUserInfo.membershipId);
+			      });
+
+			      clan.memberCount = clan.memberIds.length;
+
+			      //iterate over every member
+			      $.each(clan.memberIds, function(index, memberid) {
+				$.ajax({
+				  url: 'https://www.bungie.net/Platform/Destiny2/2/Account/' + memberid + '/Stats/',
+				  headers: {
+				    'X-API-KEY': bungieAPIkey
+				  },
+				  method: 'GET',
+				}).done(function(data) {
+				  clan.membersFetched = clan.membersFetched + 1;
+
+				  $.each(CharStatsDataLocations, function(statName, statLocation) {
+				    if (!clan[statName]) clan[statName] = 0;
+				    clan[statName] = clan[statName] + getDescendantProp(data, statLocation);
+				  });
+
+				  $('#claninfo').html(outputClanData(clan));
 				});
+
+			      });
+
+			    });
+			});
+
+			function getDescendantProp(obj, desc) {
+			  var arr = desc.split('.');
+			  while (arr.length && (obj = obj[arr.shift()]));
+			  return obj;
+			}
+
+			function convertSecoonds(s) {
+			  var d, h, m;
+			  m = Math.floor(s / 60);
+			  s = s % 60;
+			  h = Math.floor(m / 60);
+			  m = m % 60;
+			  d = Math.floor(h / 24);
+			  h = h % 24;
+			  return d + ' days ' + h + ' hours ' + m + ' minutes'
+
+			}
+
+			function outputClanData(clanobject) {
+			  var html = '';
+
+			  html += '</br>PVP Kills: ' + clanobject.pvpKills;
+			  html += '</br>PVP Deaths: ' + clanobject.pvpDeaths;
+			  html += '</br>PVP Games Won: ' + clanobject.pvpWon;
+			  html += '</br>PVP Suicides: ' + clanobject.pvpSuicides;
+			  html += '</br>PVP Time: ' + convertSecoonds(clanobject.pvpSeconds);
+			  html += '</br>';
+			  html += '</br>PVE Kills: ' + clanobject.pveKills;
+			  html += '</br>PVE Deaths: ' + clanobject.pveDeaths;
+			  html += '</br>PVE Suicides: ' + clanobject.pveSuicides;
+			  html += '</br>PVE Heroic Public Events: ' + clanobject.pveHPE;
+			  html += '</br>PVE Adventures: ' + clanobject.pveAdventures;
+			  html += '</br>PVE Time: ' + convertSecoonds(clanobject.pveSeconds);
+
+			  html += '</br></br>data collected from members: (' + clanobject.membersFetched + '/' + clanobject.memberCount + ')';
+
+			  return html;
+			}
+
+
 		</script>
 	</head>
 	<body>
