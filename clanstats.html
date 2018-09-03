@@ -47,16 +47,16 @@
 										clanPvEAdventuresCompleted = clanPvEAdventuresCompleted + data.Response.mergedAllCharacters.results.allPvE.allTime.adventuresCompleted.basic.value;
 										clanPvESecondsPlayed = clanPvESecondsPlayed + data.Response.mergedAllCharacters.results.allPvE.allTime.secondsPlayed.basic.value;
 										$('#info').html(
-												  'clan pvp kills: ' + clanPvPKills
-											+ '<br>clan pvp deaths: ' + clanPvPDeaths	  
-											+ '<br>clan pvp games won: ' + clanPvPGamesWon
-											+ '<br>clan pvp seconds played: ' + clanPvPSecondsPlayed  
-											+ '<br><br>clan pve kills: ' + clanPvEKills
-											+ '<br>clan pve deaths: ' + clanPvEDeaths
-											+ '<br>clan pve suicides: ' + clanPvESuicides
-											+ '<br>clan pve heroic public events completed: ' + clanPvEHPECompleted
-											+ '<br>clan pve adventures completed: ' + clanPvEAdventuresCompleted
-											+ '<br>clan pve seconds played: ' + clanPvESecondsPlayed
+												  'clan pvp kills: ' + (clanPvPKills).toLocaleString('en')
+											+ '<br>clan pvp deaths: ' + (clanPvPDeaths).toLocaleString('en')	  
+											+ '<br>clan pvp games won: ' + (clanPvPGamesWon).toLocaleString('en')
+											+ '<br>clan pvp seconds played: ' + (clanPvPSecondsPlayed).toLocaleString('en')
+											+ '<br><br>clan pve kills: ' + (clanPvEKills).toLocaleString('en')
+											+ '<br>clan pve deaths: ' + (clanPvEDeaths).toLocaleString('en')
+											+ '<br>clan pve suicides: ' + (clanPvESuicides).toLocaleString('en')
+											+ '<br>clan pve heroic public events completed: ' + (clanPvEHPECompleted).toLocaleString('en')
+											+ '<br>clan pve adventures completed: ' + (clanPvEAdventuresCompleted).toLocaleString('en')
+											+ '<br>clan pve seconds played: ' + (clanPvESecondsPlayed).toLocaleString('en')
 										);
 									}
 								});
