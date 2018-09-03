@@ -78,7 +78,7 @@
 			  return obj;
 			}
 
-			function convertSecoonds(s) {
+			function convertSeconds(s) {
 			  var d, h, m;
 			  m = Math.floor(s / 60);
 			  s = s % 60;
@@ -97,14 +97,14 @@
 			  html += '</br>PVP Deaths: ' + clanobject.pvpDeaths;
 			  html += '</br>PVP Games Won: ' + clanobject.pvpWon;
 			  html += '</br>PVP Suicides: ' + clanobject.pvpSuicides;
-			  html += '</br>PVP Time: ' + convertSecoonds(clanobject.pvpSeconds);
+			  html += '</br>PVP Time: ' + convertSeconds(clanobject.pvpSeconds);
 			  html += '</br>';
 			  html += '</br>PVE Kills: ' + clanobject.pveKills;
 			  html += '</br>PVE Deaths: ' + clanobject.pveDeaths;
 			  html += '</br>PVE Suicides: ' + clanobject.pveSuicides;
 			  html += '</br>PVE Heroic Public Events: ' + clanobject.pveHPE;
 			  html += '</br>PVE Adventures: ' + clanobject.pveAdventures;
-			  html += '</br>PVE Time: ' + convertSecoonds(clanobject.pveSeconds);
+			  html += '</br>PVE Time: ' + convertSeconds(clanobject.pveSeconds);
 
 			  html += '</br></br>data collected from members: (' + clanobject.membersFetched + '/' + clanobject.memberCount + ')';
 
