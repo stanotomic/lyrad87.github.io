@@ -93,18 +93,18 @@
 			function outputClanData(clanobject) {
 			  var html = '';
 
-			  html += 'PVP Kills: ' + (clanobject.pvpKills).toLocaleString('en');
-			  html += '</br>PVP Deaths: ' + (clanobject.pvpDeaths).toLocaleString('en');
-			  html += '</br>PVP Games Won: ' + (clanobject.pvpWon).toLocaleString('en');
-			  html += '</br>PVP Suicides: ' + (clanobject.pvpSuicides).toLocaleString('en');
-			  html += '</br>PVP Time: ' + convertSeconds(clanobject.pvpSeconds);
+			  html += 'PVP Kills: ' + (clanobject.pvpKills).toLocaleString('en').bold();
+			  html += '</br>PVP Deaths: ' + (clanobject.pvpDeaths).toLocaleString('en').bold();
+			  html += '</br>PVP Games Won: ' + (clanobject.pvpWon).toLocaleString('en').bold();
+			  html += '</br>PVP Suicides: ' + (clanobject.pvpSuicides).toLocaleString('en').bold();
+			  html += '</br>PVP Time: ' + convertSeconds(clanobject.pvpSeconds).bold();
 			  html += '</br>';
-			  html += '</br>PVE Kills: ' + (clanobject.pveKills).toLocaleString('en');
-			  html += '</br>PVE Deaths: ' + (clanobject.pveDeaths).toLocaleString('en');
-			  html += '</br>PVE Suicides: ' + (clanobject.pveSuicides).toLocaleString('en');
-			  html += '</br>PVE Heroic Public Events: ' + (clanobject.pveHPE).toLocaleString('en');
-			  html += '</br>PVE Adventures: ' + (clanobject.pveAdventures).toLocaleString('en');
-			  html += '</br>PVE Time: ' + convertSeconds(clanobject.pveSeconds);
+			  html += '</br>PVE Kills: ' + (clanobject.pveKills).toLocaleString('en').bold();
+			  html += '</br>PVE Deaths: ' + (clanobject.pveDeaths).toLocaleString('en').bold();
+			  html += '</br>PVE Suicides: ' + (clanobject.pveSuicides).toLocaleString('en').bold();
+			  html += '</br>PVE Heroic Public Events: ' + (clanobject.pveHPE).toLocaleString('en').bold();
+			  html += '</br>PVE Adventures: ' + (clanobject.pveAdventures).toLocaleString('en').bold();
+			  html += '</br>PVE Time: ' + convertSeconds(clanobject.pveSeconds).bold();
 
 			  html += '</br></br>Data collected from members: (' + clanobject.membersFetched + '/' + clanobject.memberCount + ')';
 
