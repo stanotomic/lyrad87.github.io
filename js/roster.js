@@ -117,6 +117,7 @@ function listMembers(rsp) {
                     '<th scope="row"><img src="https://www.bungie.net' + icon + '" style="width: 30px; height:30px"></th>' + // avatar
                     '<td class="align-middle">' + name + '</td>' + // Username
                     '<td class="align-middle text-warning">' + role + '</td>' + // Role - Not the discord role yet
+                    // '<td class="align-middle">' + twitch + '</td>' + // Twitch user
                     '<td class="align-middle">' + joined.replace(/-/g, '/') + '</td>' + // Joined
                     '<td class="align-middle member-status"><span class="member-online" id="status-' + memberId + '">' + online + '</span></td>' + // In game online status
                     '<td class="align-middle text-center"><a target="_blank" href="https://destinytracker.com/d2/profile/psn/' + name + '">View Stats</a></td>' + // DTR Profile
