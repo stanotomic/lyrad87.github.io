@@ -86,7 +86,8 @@
            CharStatsDataLocations.pvpDeaths = 'Response.mergedAllCharacters.results.allPvP.allTime.deaths.basic.value';
            CharStatsDataLocations.pvpSuicides = 'Response.mergedAllCharacters.results.allPvP.allTime.suicides.basic.value';
            CharStatsDataLocations.pvpSeconds = 'Response.mergedAllCharacters.results.allPvP.allTime.secondsPlayed.basic.value';
-	   CharStatsDataLocations.pvpWROOMs = 'Response.mergedAllCharacters.results.allPvP.allTime.medalStreakAbsurd.basic.value';
+	         CharStatsDataLocations.pvpWROOMs = 'Response.mergedAllCharacters.results.allPvP.allTime.medalStreakAbsurd.basic.value';
+           CharStatsDataLocations.pvpUndefeats = 'Response.mergedAllCharacters.results.allPvP.allTime.medalMatchUndefeated.basic.value';
 
            CharStatsDataLocations.pveKills = 'Response.mergedAllCharacters.results.allPvE.allTime.kills.basic.value';
            CharStatsDataLocations.pveDeaths = 'Response.mergedAllCharacters.results.allPvE.allTime.deaths.basic.value';
@@ -205,7 +206,8 @@
               html += '<dt>PVP Collective K/D</dt><dd>' + (Math.round(clanobject.pvpKD * 100) / 100).toLocaleString('en') + '</dd>';
               html += '<dt>PVP Time</dt><dd>' + convertSeconds(clanobject.pvpSeconds) + '</dd>';
               html += '</br>';
-              html += '<dt><img src="https://www.destinygamewiki.com/mediawiki/images/3/39/We_ran_out_of_medals_medal1.png" width="24" height="24">&nbsp;We Ran out of Medals</dt><dd>' + (clanobject.pvpWROOMs).toLocaleString('en') + '</dd>';
+              html += '<dt><img src="https://www.bungie.net/common/destiny2_content/icons/icon_md2de6954efb417d6571bea9202dbadfd.png" width="20" height="20"> We Ran out of Medals</dt><dd>' + (clanobject.pvpWROOMs).toLocaleString('en') + '</dd>';
+              html += '<dt><img src="https://www.bungie.net/common/destiny2_content/icons/icon_m3c7546b477f5378b3c605f4be6d45376.png" width="20" height="20"> Undefeated</dt><dd>' + (clanobject.pvpUndefeats).toLocaleString('en') + '</dd>';
       	      html += '</br>';
       	      html += '<dt>PVE Kills</dt><dd>' + (clanobject.pveKills).toLocaleString('en') + '</dd>';
               html += '<dt>PVE Deaths</dt><dd>' + (clanobject.pveDeaths).toLocaleString('en') + '</dd>';
