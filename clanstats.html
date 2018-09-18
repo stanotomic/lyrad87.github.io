@@ -88,6 +88,9 @@
            CharStatsDataLocations.pvpSeconds = 'Response.mergedAllCharacters.results.allPvP.allTime.secondsPlayed.basic.value';
 	         CharStatsDataLocations.pvpWROOMs = 'Response.mergedAllCharacters.results.allPvP.allTime.medalStreakAbsurd.basic.value';
            CharStatsDataLocations.pvpUndefeats = 'Response.mergedAllCharacters.results.allPvP.allTime.medalMatchUndefeated.basic.value';
+           CharStatsDataLocations.pvpInvincible = 'Response.mergedAllCharacters.results.allPvP.allTime.medalShowdownUndefeated.basic.value';
+           CharStatsDataLocations.pvpComeback = 'Response.mergedAllCharacters.results.allPvP.allTime.medalMatchComeback.basic.value';
+           CharStatsDataLocations.pvpAnnihilation = 'Response.mergedAllCharacters.results.allPvP.allTime.medalMultiEntireTeam.basic.value';
 
            CharStatsDataLocations.pveKills = 'Response.mergedAllCharacters.results.allPvE.allTime.kills.basic.value';
            CharStatsDataLocations.pveDeaths = 'Response.mergedAllCharacters.results.allPvE.allTime.deaths.basic.value';
@@ -208,6 +211,10 @@
               html += '</br>';
               html += '<dt><img src="https://www.bungie.net/common/destiny2_content/icons/icon_md2de6954efb417d6571bea9202dbadfd.png" width="20" height="20"> We Ran out of Medals</dt><dd>' + (clanobject.pvpWROOMs).toLocaleString('en') + '</dd>';
               html += '<dt><img src="https://www.bungie.net/common/destiny2_content/icons/icon_m3c7546b477f5378b3c605f4be6d45376.png" width="20" height="20"> Undefeated</dt><dd>' + (clanobject.pvpUndefeats).toLocaleString('en') + '</dd>';
+              html += '<dt><img src="https://www.bungie.net/common/destiny2_content/icons/icon_mf6bdc19ff454b545dec8e847696f8d57.png" width="20" height="20"> Invincible</dt><dd>' + (clanobject.pvpInvincible).toLocaleString('en') + '</dd>';
+              html += '<dt><img src="https://www.bungie.net/common/destiny2_content/icons/icon_mee5acb046145e887d1e7698fa0171603.png" width="20" height="20"> From the Jaws of Defeat</dt><dd>' + (clanobject.pvpComeback).toLocaleString('en') + '</dd>';
+              html += '<dt><img src="https://www.bungie.net/common/destiny2_content/icons/icon_m5be2652a5476087266bb9cf3f95e8372.png" width="20" height="20"> Annihilation</dt><dd>' + (clanobject.pvpAnnihilation).toLocaleString('en') + '</dd>';
+
       	      html += '</br>';
       	      html += '<dt>PVE Kills</dt><dd>' + (clanobject.pveKills).toLocaleString('en') + '</dd>';
               html += '<dt>PVE Deaths</dt><dd>' + (clanobject.pveDeaths).toLocaleString('en') + '</dd>';
