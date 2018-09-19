@@ -51,8 +51,9 @@
             }
              .counter {
                background-color: #f5f5f5;
-               padding: 20px 0;
-               border-radius: 5px;
+               padding: 10px 0;
+               border-radius: 20px;
+               line-height: 1 !important;
             }
              .count-title {
                font-size: 40px;
@@ -62,8 +63,8 @@
                text-align: center;
             }
              .count-text {
-               font-size: 12px;
-               font-weight: normal;
+               font-size: 14px;
+               font-weight: bold;
                margin-top: 10px;
                margin-bottom: 0;
                text-align: center;
@@ -75,12 +76,12 @@
                color: #4ad1e5;
             }
              .row {
-               margin-top: 20px;
-               margin-bottom: 20px;
+               margin-top: 10px;
+               margin-bottom: 10px;
             }
              .slimrow {
                margin: 0 auto !important;
-               width: 230px;
+               width: 130px;
             }
     </style>
 		
@@ -243,200 +244,200 @@
            <div class="bounce2"></div>
            <div class="bounce3"></div>
         </div>
-         <div id="claninfo" class="container">
-            <div class="row text-center">
-               <div class="col">
-                 <div class="counter">
-                    <i class="fa fa-code fa-2x"></i>
-                    <p id="pvpKills"></p>
-                    <p class="count-text ">PVP Kills</p>
-                 </div>
-              </div>
-               <div class="col">
-                 <div class="counter">
-                    <i class="fa fa-code fa-2x"></i>
-                    <p id="pvpAssists"></p>
-                    <p class="count-text ">PVP Assists</p>
-                 </div>
-              </div>
-               <div class="col">
-                 <div class="counter">
-                    <i class="fa fa-code fa-2x"></i>
-                    <p id="pvpDeaths"></p>
-                    <p class="count-text ">PVP Deaths</p>
-                 </div>
-              </div>
+        <div id="claninfo" class="container">
+          <div class="row text-center">
               <div class="col">
-                 <div class="counter">
-                    <i class="fa fa-code fa-2x"></i>
-                    <p id="pvpSuicides"></p>
-                    <p class="count-text ">PVP Suicides</p>
-                 </div>
-              </div>
-            </div>
-            <div class="row text-center">
-               <div class="col">
-                 <div class="counter">
-                    <i class="fa fa-code fa-2x"></i>
-                    <p id="pvpWon"></p>
-                    <p class="count-text ">PVP Games Won</p>
-                 </div>
-              </div>
-              <div class="col">
-                 <div class="counter">
-                    <i class="fa fa-code fa-2x"></i>
-                    <p id="pvpKD"></p>
-                    <p class="count-text ">PVP K/D</p>
-                 </div>
-              </div>
-               <div class="col">
-                 <div class="counter">
-                    <i class="fa fa-code fa-2x"></i>
-                    <p id="pvpKDA"></p>
-                    <p class="count-text ">PVP (K+A)/D</p>
-                 </div>
-              </div>
-               <div class="col">
-                 <div class="counter">
-                    <i class="fa fa-code fa-2x"></i>
-                    <p id="pvpCollKD"></p>
-                    <p class="count-text ">PVP Collective K/D</p>
-                 </div>
-              </div>
-           </div>
-            <div class="row text-center">
-               <div class="col">
-                 <div class="counter">
-                    <i class="fa fa-code fa-2x"></i>
-                    <p id="pveKills"></p>
-                    <p class="count-text ">PVE Kills</p>
-                 </div>
-              </div>
-               <div class="col">
-                 <div class="counter">
-                    <i class="fa fa-code fa-2x"></i>
-                    <p id="pveDeaths"></p>
-                    <p class="count-text ">PVE Deaths</p>
-                 </div>
-              </div>
-               <div class="col">
-                 <div class="counter">
-                    <i class="fa fa-code fa-2x"></i>
-                    <p id="pveSuicides"></p>
-                    <p class="count-text ">PVE Suicides</p>
-                 </div>
-              </div>
-               <div class="col">
-                 <div class="counter">
-                    <i class="fa fa-code fa-2x"></i>
-                    <p id="pveOrbs"></p>
-                    <p class="count-text ">PVE Orbs Created</p>
-                 </div>
-              </div>
-               <div class="col">
-                 <div class="counter">
-                    <i class="fa fa-code fa-2x"></i>
-                    <p id="pveAdventures"></p>
-                    <p class="count-text ">PVE Adventures</p>
-                 </div>
-              </div>
-              <div class="col">
-                 <div class="counter">
-                    <i class="fa fa-code fa-2x"></i>
-                    <p id="pveHPE"></p>
-                    <p class="count-text ">PVE Heroic Public Events</p>
-                 </div>
-              </div>
-            </div>
-            <div class="row text-center">
-               <div class="col">
-                 <div class="counter">
-                    <img src="https://cdn.thetrackernetwork.com/destiny/common/destiny2_content/icons/46222d32033acc5766571b1435fa737c.png" width="34" height="34">
-                    <p id="pvpSeconds"></p>
-                    <p class="count-text ">PVP Time</p>
-                 </div>
-              </div>
-              <div class="col">
-                 <div class="counter">
-                    <img src="https://cdn.thetrackernetwork.com/destiny/common/destiny2_content/icons/2c475713250e7938500dac4b6bfeebed.png" width="34" height="34">
+                 <div class="counter border border-info">
+                    <p><img src="https://cdn.thetrackernetwork.com/destiny/common/destiny2_content/icons/2c475713250e7938500dac4b6bfeebed.png" width="34" height="34"></p>
                     <p id="pveSeconds"></p>
-                    <p class="count-text ">PVE Time</p>
+                    <p class="count-text">PVE Total Time</p>
                  </div>
               </div>
-            </div>
-            <div class="row text-center">
               <div class="col">
-                 <div class="counter"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_md2de6954efb417d6571bea9202dbadfd.png" width="34" height="34">
+                <div class="counter border border-danger">
+                    <p><img src="https://cdn.thetrackernetwork.com/destiny/common/destiny2_content/icons/46222d32033acc5766571b1435fa737c.png" width="34" height="34"></p>
+                    <p id="pvpSeconds"></p>
+                    <p class="count-text">PVP Total Time</p>
+                </div>
+              </div>
+          </div>
+        </div>
+
+        <div class="row text-center">
+          <div class="col">
+              <div class="counter border border-info">
+                    <p id="pveKills"></p>
+                    <p class="count-text">PVE Kills</p>
+              </div>
+          </div>
+          <div class="col">
+              <div class="counter border border-info">
+                    <p id="pveDeaths"></p>
+                    <p class="count-text">PVE Deaths</p>
+              </div>
+          </div>
+          <div class="col">
+              <div class="counter border border-info">
+                    <p id="pveSuicides"></p>
+                    <p class="count-text">PVE Suicides</p>
+              </div>
+          </div>
+          <div class="col">
+              <div class="counter border border-info">
+                    <p id="pveOrbs"></p>
+                    <p class="count-text">Orbs Created</p>
+              </div>
+          </div>
+        </div>
+
+        <div class="row text-center">
+          <div class="col">
+              <div class="counter border border-info">
+                    <p id="pveAdventures"></p>
+                    <p class="count-text">Adventures Completed</p>
+              </div>
+          </div>
+          <div class="col">
+              <div class="counter border border-info">
+                    <p id="pveHPE"></p>
+                    <p class="count-text">Heroic Public Events</p>
+              </div>
+          </div>
+        </div>
+
+        <div class="row text-center">
+          <div class="col">
+              <div class="counter border border-danger">
+                    <p id="pvpKills"></p>
+                    <p class="count-text">PVP Kills</p>
+              </div>
+          </div>
+          <div class="col">
+              <div class="counter border border-danger">
+                    <p id="pvpDeaths"></p>
+                    <p class="count-text">PVP Deaths</p>
+              </div>
+          </div>
+          <div class="col">
+              <div class="counter border border-danger">
+                    <p id="pvpSuicides"></p>
+                    <p class="count-text">PVP Suicides</p>
+              </div>
+          </div>
+          <div class="col">
+              <div class="counter border border-danger">
+                    <p id="pvpAssists"></p>
+                    <p class="count-text">PVP Assists</p>
+              </div>
+          </div>
+        </div>
+        <div class="row text-center">
+          <div class="col">
+              <div class="counter border border-danger">
+                    <p id="pvpWon"></p>
+                    <p class="count-text">PVP Games Won</p>
+              </div>
+          </div>
+          <div class="col">
+              <div class="counter border border-danger">
+                    <p id="pvpKD"></p>
+                    <p class="count-text">PVP K/D</p>
+              </div>
+          </div>
+          <div class="col">
+              <div class="counter border border-danger">
+                    <p id="pvpKDA"></p>
+                    <p class="count-text">PVP (K+A)/D</p>
+              </div>
+          </div>
+        </div>
+
+        <div class="row text-center">
+          <div class="col">
+              <div class="counter border border-warning">
+                    <p><img src="https://www.bungie.net/common/destiny2_content/icons/icon_md2de6954efb417d6571bea9202dbadfd.png" width="34" height="34"></p>
                     <p id="pvpWROOMs"></p>
-                    <p class="count-text ">We Ran out of Medals</p>
-                 </div>
+                    <p class="count-text">We Ran out of Medals</p>
               </div>
-              <div class="col">
-                 <div class="counter"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_m3c7546b477f5378b3c605f4be6d45376.png" width="34" height="34">
+          </div>
+          <div class="col">
+              <div class="counter border border-warning">
+                    <p><img src="https://www.bungie.net/common/destiny2_content/icons/icon_m3c7546b477f5378b3c605f4be6d45376.png" width="34" height="34"></p>
                     <p id="pvpUndefeats"></p>
-                    <p class="count-text ">Undefeated</p>
-                 </div>
+                    <p class="count-text">Undefeated</p>
               </div>
-              <div class="col">
-                 <div class="counter"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_mf6bdc19ff454b545dec8e847696f8d57.png" width="34" height="34">
+          </div>
+          <div class="col">
+              <div class="counter border border-warning">
+                    <p><img src="https://www.bungie.net/common/destiny2_content/icons/icon_mf6bdc19ff454b545dec8e847696f8d57.png" width="34" height="34"></p>
                     <p id="pvpInvincible"></p>
-                    <p class="count-text ">Invincible</p>
-                 </div>
+                    <p class="count-text">Invincible</p>
               </div>
-              <div class="col">
-                 <div class="counter"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_mee5acb046145e887d1e7698fa0171603.png" width="34" height="34">
-                    <p id="pvpComeback"></p>
-                    <p class="count-text ">From the Jaws of Defeat</p>
-                 </div>
-              </div>
-              <div class="col">
-                 <div class="counter"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_m5bee79e64764fa4c94d795848d4362e6.png" width="34" height="34">
-                    <p id="pvpDoubles"></p>
-                    <p class="count-text ">Double Play</p>
-                 </div>
-              </div>
-           </div>
-           <div class="row text-center">
-              <div class="col">
-                 <div class="counter"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_ma60aa3835852cc63462a8539e9543419.png" width="34" height="34">
-                    <p id="pvpLightsOut"></p>
-                    <p class="count-text ">Lights Out</p>
-                 </div>
-              </div>
-              <div class="col">
-                 <div class="counter"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_m5be2652a5476087266bb9cf3f95e8372.png" width="34" height="34">
+          </div>
+          <div class="col">
+              <div class="counter border border-warning">
+                    <p><img src="https://www.bungie.net/common/destiny2_content/icons/icon_m5be2652a5476087266bb9cf3f95e8372.png" width="34" height="34"></p>
                     <p id="pvpAnnihilation"></p>
-                    <p class="count-text ">Annihilation</p>
-                 </div>
+                    <p class="count-text">Annihilation</p>
               </div>
-              <div class="col">
-                 <div class="counter"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_mdbab442edbc7e7ecd6a56f5ac1b1dd47.png" width="34" height="34">
+          </div>
+        </div>
+
+        <div class="row text-center">
+          <div class="col">
+              <div class="counter border border-warning">
+                    <p><img src="https://www.bungie.net/common/destiny2_content/icons/icon_m5bee79e64764fa4c94d795848d4362e6.png" width="34" height="34"></p>
+                    <p id="pvpDoubles"></p>
+                    <p class="count-text">Double Play</p>
+              </div>
+          </div>
+          <div class="col">
+              <div class="counter border border-warning">
+                    <p><img src="https://www.bungie.net/common/destiny2_content/icons/icon_ma60aa3835852cc63462a8539e9543419.png" width="34" height="34"></p>
+                    <p id="pvpLightsOut"></p>
+                    <p class="count-text">Lights Out</p>
+              </div>
+          </div>
+          <div class="col">
+              <div class="counter border border-warning">
+                    <p><img src="https://www.bungie.net/common/destiny2_content/icons/icon_mee5acb046145e887d1e7698fa0171603.png" width="34" height="34"></p>
+                    <p id="pvpComeback"></p>
+                    <p class="count-text">From the Jaws of Defeat</p>
+              </div>
+          </div>
+          <div class="col">
+              <div class="counter border border-warning">
+                    <p><img src="https://www.bungie.net/common/destiny2_content/icons/icon_mdbab442edbc7e7ecd6a56f5ac1b1dd47.png" width="34" height="34"></p>
                     <p id="pvpRuthless"></p>
-                    <p class="count-text ">Ruthless</p>
-                 </div>
+                    <p class="count-text">Ruthless</p>
               </div>
-              <div class="col">
-                 <div class="counter"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_me582cbac24c4cecd6f728afc67f882f9.png" width="34" height="34">
+          </div>
+        </div>
+
+        <div class="row text-center">
+          <div class="col">
+              <div class="counter border border-warning">
+                    <p><img src="https://www.bungie.net/common/destiny2_content/icons/icon_me582cbac24c4cecd6f728afc67f882f9.png" width="34" height="34"></p>
                     <p id="pvpFightMe"></p>
-                    <p class="count-text ">Fight Me!</p>
-                 </div>
+                    <p class="count-text">Fight Me!</p>
               </div>
-              <div class="col">
-                 <div class="counter"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_m164efd3b6b3104df99c3b86a6522f68b.png" width="34" height="34">
+          </div>
+          <div class="col">
+              <div class="counter border border-warning">
+                    <p><img src="https://www.bungie.net/common/destiny2_content/icons/icon_m164efd3b6b3104df99c3b86a6522f68b.png" width="34" height="34"></p>
                     <p id="pvpNSFMF"></p>
-                    <p class="count-text ">Not So Fast, My Friend</p>
-                 </div>
+                    <p class="count-text">Not So Fast, My Friend</p>
               </div>
-           </div>
-           <div class="row text-center slimrow">
-              <div class="col">
-                 <div class="counter">
-                    <i class="fa fa-code fa-2x"></i>
+          </div>
+        </div>
+        <div class="row text-center ">
+          <div class="col">
+              <div class="counter border border-dark">
                     <p id="membercounter"></p>
-                    <p class="count-text ">Data collected from members</p>
-                 </div>
+                    <p class="count-text">Data collected from members</p>
               </div>
-            </div>
-         </div>
+          </div>
+        </div>
+    </div>
 	</body>
 </html>
