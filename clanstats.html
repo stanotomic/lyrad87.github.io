@@ -1,120 +1,517 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<style>
+            body {
+               font-family: Muli, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+            }
+
+            .spinner {
+               margin: 0 auto 0;
+               /*dth: 170px;*/
+               text-align: center;
+            }
+
+            .spinner>div {
+               width: 12px;
+               height: 12px;
+               background-color: #333;
+               border-radius: 100%;
+               display: inline-block;
+               -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+               animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+            }
+
+            .spinner .bounce1 {
+               -webkit-animation-delay: -0.32s;
+               animation-delay: -0.32s;
+            }
+
+            .spinner .bounce2 {
+               -webkit-animation-delay: -0.16s;
+               animation-delay: -0.16s;
+            }
+
+            @-webkit-keyframes sk-bouncedelay {
+               0%,
+               80%,
+               100% {
+                  -webkit-transform: scale(0)
+               }
+               40% {
+                  -webkit-transform: scale(1.0)
+               }
+            }
+
+            @keyframes sk-bouncedelay {
+               0%,
+               80%,
+               100% {
+                  -webkit-transform: scale(0);
+                  transform: scale(0);
+               }
+               40% {
+                  -webkit-transform: scale(1.0);
+                  transform: scale(1.0);
+               }
+            }
+
+            .counter {
+               background-color: #f5f5f5;
+               padding: 20px 0;
+               border-radius: 5px;
+            }
+
+            .count-title {
+               font-size: 40px;
+               font-weight: normal;
+               margin-top: 10px;
+               margin-bottom: 0;
+               text-align: center;
+            }
+
+            .count-text {
+               font-size: 12px;
+               font-weight: normal;
+               margin-top: 10px;
+               margin-bottom: 0;
+               text-align: center;
+            }
+
+            .fa-2x {
+               margin: 0 auto;
+               float: none;
+               display: table;
+               color: #4ad1e5;
+            }
+
+            .row {
+               margin-top: 20px;
+               margin-bottom: 20px;
+            }
+
+            .slimrow {
+               margin: 0 auto !important;
+               width: 230px;
+            }
+
+		</style>
+		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+        
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
 		<script>
-			
+           
+           //v3.0.0
+          var bungieAPIkey = '0a11942f318647978979f13ad8aa53ee';
 
-			$(document).ready(function() {
-			  var bungieAPIkey = '0a11942f318647978979f13ad8aa53ee';
+          var clan = {};
+          clan.memberIds = [];
+          clan.memberCount = 0;
+          clan.membersFetched = 0;
+          clan.memberName = {};
+          clan.retryCounter = {};
+          clan.unresolvedMemberNames = [];
 
-			  var clan = {};
-			  clan.memberIds = [];
-			  clan.memberCount = 0;
-			  clan.membersFetched = 0;
+          var CharStatsDataLocations = {};
 
-			  var CharStatsDataLocations = {};
+          CharStatsDataLocations.pvpKills = 'Response.mergedAllCharacters.results.allPvP.allTime.kills.basic.value';
+          CharStatsDataLocations.pvpAssists = 'Response.mergedAllCharacters.results.allPvP.allTime.assists.basic.value';
+          CharStatsDataLocations.pvpKD = 'Response.mergedAllCharacters.results.allPvP.allTime.killsDeathsRatio.basic.value';
+          CharStatsDataLocations.pvpWon = 'Response.mergedAllCharacters.results.allPvP.allTime.activitiesWon.basic.value';
+          CharStatsDataLocations.pvpDeaths = 'Response.mergedAllCharacters.results.allPvP.allTime.deaths.basic.value';
+          CharStatsDataLocations.pvpSuicides = 'Response.mergedAllCharacters.results.allPvP.allTime.suicides.basic.value';
+          CharStatsDataLocations.pvpSeconds = 'Response.mergedAllCharacters.results.allPvP.allTime.secondsPlayed.basic.value';
+          CharStatsDataLocations.pvpWROOMs = 'Response.mergedAllCharacters.results.allPvP.allTime.medalStreakAbsurd.basic.value';
+          CharStatsDataLocations.pvpUndefeats = 'Response.mergedAllCharacters.results.allPvP.allTime.medalMatchUndefeated.basic.value';
+          CharStatsDataLocations.pvpInvincible = 'Response.mergedAllCharacters.results.allPvP.allTime.medalShowdownUndefeated.basic.value';
+          CharStatsDataLocations.pvpComeback = 'Response.mergedAllCharacters.results.allPvP.allTime.medalMatchComeback.basic.value';
+          CharStatsDataLocations.pvpDoubles = 'Response.mergedAllCharacters.results.allPvP.allTime.medalMulti2x.basic.value';
+          CharStatsDataLocations.pvpLightsOut = 'Response.mergedAllCharacters.results.allPvP.allTime.medalMulti4x.basic.value';
+          CharStatsDataLocations.pvpAnnihilation = 'Response.mergedAllCharacters.results.allPvP.allTime.medalMultiEntireTeam.basic.value';
+          CharStatsDataLocations.pvpRuthless = 'Response.mergedAllCharacters.results.allPvP.allTime.medalStreak5x.basic.value';
+          CharStatsDataLocations.pvpFightMe = 'Response.mergedAllCharacters.results.allPvP.allTime.medalMatchMostDamage.basic.value';
+          CharStatsDataLocations.pvpNSFMF = 'Response.mergedAllCharacters.results.allPvP.allTime.medalSuperShutdown.basic.value';
 
-			  CharStatsDataLocations.pvpKills = 'Response.mergedAllCharacters.results.allPvP.allTime.kills.basic.value';
-			  CharStatsDataLocations.pvpDeaths = 'Response.mergedAllCharacters.results.allPvP.allTime.deaths.basic.value';
-			  CharStatsDataLocations.pvpWon = 'Response.mergedAllCharacters.results.allPvP.allTime.activitiesWon.basic.value';
-			  CharStatsDataLocations.pvpSuicides = 'Response.mergedAllCharacters.results.allPvP.allTime.suicides.basic.value';
-			  CharStatsDataLocations.pvpSeconds = 'Response.mergedAllCharacters.results.allPvP.allTime.secondsPlayed.basic.value';
 
-			  CharStatsDataLocations.pveKills = 'Response.mergedAllCharacters.results.allPvE.allTime.kills.basic.value';
-			  CharStatsDataLocations.pveDeaths = 'Response.mergedAllCharacters.results.allPvE.allTime.deaths.basic.value';
-			  CharStatsDataLocations.pveSuicides = 'Response.mergedAllCharacters.results.allPvE.allTime.suicides.basic.value';
-			  CharStatsDataLocations.pveHPE = 'Response.mergedAllCharacters.results.allPvE.allTime.heroicPublicEventsCompleted.basic.value';
-			  CharStatsDataLocations.pveAdventures = 'Response.mergedAllCharacters.results.allPvE.allTime.adventuresCompleted.basic.value';
-			  CharStatsDataLocations.pveSeconds = 'Response.mergedAllCharacters.results.allPvE.allTime.secondsPlayed.basic.value';
+          CharStatsDataLocations.pveKills = 'Response.mergedAllCharacters.results.allPvE.allTime.kills.basic.value';
+          CharStatsDataLocations.pveDeaths = 'Response.mergedAllCharacters.results.allPvE.allTime.deaths.basic.value';
+          CharStatsDataLocations.pveSuicides = 'Response.mergedAllCharacters.results.allPvE.allTime.suicides.basic.value';
+          CharStatsDataLocations.pveOrbs = 'Response.mergedAllCharacters.results.allPvE.allTime.orbsDropped.basic.value';
+          CharStatsDataLocations.pveHPE = 'Response.mergedAllCharacters.results.allPvE.allTime.heroicPublicEventsCompleted.basic.value';
+          CharStatsDataLocations.pveAdventures = 'Response.mergedAllCharacters.results.allPvE.allTime.adventuresCompleted.basic.value';
+          CharStatsDataLocations.pveSeconds = 'Response.mergedAllCharacters.results.allPvE.allTime.secondsPlayed.basic.value';
+
+          $(document).ready(function() {
 
 
+             $.ajax({
+                //get member infos from our clan
+                url: 'https://www.bungie.net/Platform/GroupV2/1801684/Members/',
+                headers: {
+                   'X-API-KEY': bungieAPIkey
+                },
+                method: 'GET',
 
-			  $.ajax({
-			    //get member infos from our clan
-			    url: 'https://www.bungie.net/Platform/GroupV2/1801684/Members/',
-			    headers: {
-			      'X-API-KEY': bungieAPIkey
-			    },
-			    method: 'GET',
+             }).done(
+                function(data) {
+                   //collect id strings from every clan member
+                   if (!data.Response) {
+                      $('#claninfo').html('API down?');
+                      return;
+                   }
+                   $.each(data.Response.results, function(index, value) {
+                      clan.memberIds.push(value.destinyUserInfo.membershipId);
+                      clan.retryCounter[value.destinyUserInfo.membershipId] = 0;
+                      clan.memberName[value.destinyUserInfo.membershipId] = value.destinyUserInfo.displayName;
+                   });
 
-			  }).done(
-			    function(data) {
-			      //collect id strings from every clan member
-			      $.each(data.Response.results, function(index, value) {
-				clan.memberIds.push(value.destinyUserInfo.membershipId);
-			      });
+                   clan.memberCount = clan.memberIds.length;
 
-			      clan.memberCount = clan.memberIds.length;
+                   //iterate over every member
+                   $.each(clan.memberIds, function(index, memberid) {
+                      getAccountData(memberid);
 
-			      //iterate over every member
-			      $.each(clan.memberIds, function(index, memberid) {
-				$.ajax({
-				  url: 'https://www.bungie.net/Platform/Destiny2/2/Account/' + memberid + '/Stats/',
-				  headers: {
-				    'X-API-KEY': bungieAPIkey
-				  },
-				  method: 'GET',
-				}).done(function(data) {
-				  clan.membersFetched = clan.membersFetched + 1;
+                   });
 
-				  $.each(CharStatsDataLocations, function(statName, statLocation) {
-				    if (!clan[statName]) clan[statName] = 0;
-				    clan[statName] = clan[statName] + getDescendantProp(data, statLocation);
-				  });
+                });
+          });
 
-				  $('#claninfo').html(outputClanData(clan));
-				});
+          $(document).ajaxStop(function() {
+             if (clan.unresolvedMemberNames.length > 0) {
+                $('.spinner').html('(unable to fetch ' + clan.unresolvedMemberNames.join(', ') + ')');
+             } else {
+                $('.spinner').hide();
+             }
 
-			      });
+          });
 
-			    });
-			});
+          function getAccountData(memberid) {
+             //track number of tries for every member
+             clan.retryCounter[memberid] = clan.retryCounter[memberid] + 1;
+             if (clan.retryCounter[memberid] > 10) {
+                //give up on him =/
+                clan.unresolvedMemberNames.push(clan.memberName[memberid]);
+                return;
+             }
 
-			function getDescendantProp(obj, desc) {
-			  var arr = desc.split('.');
-			  while (arr.length && (obj = obj[arr.shift()]));
-			  return obj;
-			}
+             $.ajax({
+                url: 'https://www.bungie.net/Platform/Destiny2/2/Account/' + memberid + '/Stats/',
+                headers: {
+                   'X-API-KEY': bungieAPIkey
+                },
+                data: {
+                   groups: "1,3"
+                },
+                method: 'GET',
 
-			function convertSecoonds(s) {
-			  var d, h, m;
-			  m = Math.floor(s / 60);
-			  s = s % 60;
-			  h = Math.floor(m / 60);
-			  m = m % 60;
-			  d = Math.floor(h / 24);
-			  h = h % 24;
-			  return d + ' days ' + h + ' hours ' + m + ' minutes'
+             }).done(function(data) {
 
-			}
+                if (data.ErrorCode > 1 || !data.Response) {
+                   getAccountData(memberid); //try again
+                } else {
+                   clan.membersFetched = clan.membersFetched + 1;
+                   $.each(CharStatsDataLocations, function(statName, statLocation) {
+                      if (!clan[statName]) clan[statName] = 0;
+                      clan[statName] = clan[statName] + getDescendantProp(data, statLocation);
+                   });
 
-			function outputClanData(clanobject) {
-			  var html = '';
+                   outputClanData(clan);
+                }
 
-			  html += '</br>PVP Kills: ' + clanobject.pvpKills;
-			  html += '</br>PVP Deaths: ' + clanobject.pvpDeaths;
-			  html += '</br>PVP Games Won: ' + clanobject.pvpWon;
-			  html += '</br>PVP Suicides: ' + clanobject.pvpSuicides;
-			  html += '</br>PVP Time: ' + convertSecoonds(clanobject.pvpSeconds);
-			  html += '</br>';
-			  html += '</br>PVE Kills: ' + clanobject.pveKills;
-			  html += '</br>PVE Deaths: ' + clanobject.pveDeaths;
-			  html += '</br>PVE Suicides: ' + clanobject.pveSuicides;
-			  html += '</br>PVE Heroic Public Events: ' + clanobject.pveHPE;
-			  html += '</br>PVE Adventures: ' + clanobject.pveAdventures;
-			  html += '</br>PVE Time: ' + convertSecoonds(clanobject.pveSeconds);
+             });
+             return;
+          }
 
-			  html += '</br></br>data collected from members: (' + clanobject.membersFetched + '/' + clanobject.memberCount + ')';
+          function getDescendantProp(obj, desc) {
+             var arr = desc.split('.');
+             while (arr.length && (obj = obj[arr.shift()]));
+             return obj;
+          }
 
-			  return html;
-			}
+          function convertSeconds(s) {
+             var d, h, m;
+             m = Math.floor(s / 60);
+             s = s % 60;
+             h = Math.floor(m / 60);
+             m = m % 60;
+             d = Math.floor(h / 24);
+             h = h % 24;
+             return d + ' days, ' + h + ' hours, ' + m + ' minutes'
 
+          }
+
+          function outputClanData(clanobject) {
+
+             $('#pvpKills').html((clanobject.pvpKills).toLocaleString('en'));
+             $('#pvpAssists').html((clanobject.pvpAssists).toLocaleString('en'));
+             $('#pvpWon').html((clanobject.pvpWon).toLocaleString('en'));
+             $('#pvpDeaths').html((clanobject.pvpDeaths).toLocaleString('en'));
+             $('#pvpSuicides').html((clanobject.pvpSuicides).toLocaleString('en'));
+
+             $('#pvpKD').html((Math.round(clanobject.pvpKills / clanobject.pvpDeaths * 100) / 100).toLocaleString('en'));
+             $('#pvpKDA').html((Math.round((clanobject.pvpKills + clanobject.pvpAssists) / clanobject.pvpDeaths * 100) / 100).toLocaleString('en'));
+             $('#pvpCollKD').html((Math.round(clanobject.pvpKD * 100) / 100).toLocaleString('en'));
+             $('#pvpSeconds').html(convertSeconds(clanobject.pvpSeconds));
+
+             $('#pvpWROOMs').html((clanobject.pvpWROOMs).toLocaleString('en'));
+             $('#pvpUndefeats').html((clanobject.pvpUndefeats).toLocaleString('en'));
+             $('#pvpInvincible').html((clanobject.pvpInvincible).toLocaleString('en'));
+             $('#pvpComeback').html((clanobject.pvpComeback).toLocaleString('en'));
+             $('#pvpDoubles').html((clanobject.pvpDoubles).toLocaleString('en'));
+             $('#pvpLightsOut').html((clanobject.pvpLightsOut).toLocaleString('en'));
+             $('#pvpAnnihilation').html((clanobject.pvpAnnihilation).toLocaleString('en'));
+             $('#pvpRuthless').html((clanobject.pvpRuthless).toLocaleString('en'));
+             $('#pvpFightMe').html((clanobject.pvpFightMe).toLocaleString('en'));
+             $('#pvpNSFMF').html((clanobject.pvpNSFMF).toLocaleString('en'));
+
+             $('#pveKills').html((clanobject.pveKills).toLocaleString('en'));
+             $('#pveDeaths').html((clanobject.pveDeaths).toLocaleString('en'));
+             $('#pveSuicides').html((clanobject.pveSuicides).toLocaleString('en'));
+             $('#pveOrbs').html((clanobject.pveOrbs).toLocaleString('en'));
+             $('#pveAdventures').html((clanobject.pveAdventures).toLocaleString('en'));
+             $('#pveHPE').html((clanobject.pveHPE).toLocaleString('en'));
+             $('#pveSeconds').html(convertSeconds(clanobject.pveSeconds));
+
+             $('#membercounter').html(clanobject.membersFetched + '/' + clanobject.memberCount);
+
+             return;
+          }
 
 		</script>
 	</head>
-	<body>
-		<div id="info"></div>
+	
+    <body>
+        <div class="spinner">
+           <div class="bounce1"></div>
+           <div class="bounce2"></div>
+           <div class="bounce3"></div>
+        </div>
+
+        <div id="claninfo" class="container">
+
+           <div class="row text-center">
+
+              <div class="col">
+                 <div class="counter">
+                    <i class="fa fa-code fa-2x"></i>
+                    <p id="pvpKills"></p>
+                    <p class="count-text ">PVP Kills</p>
+                 </div>
+              </div>
+
+              <div class="col">
+                 <div class="counter">
+                    <i class="fa fa-code fa-2x"></i>
+                    <p id="pvpAssists"></p>
+                    <p class="count-text ">PVP Assists</p>
+                 </div>
+              </div>
+
+
+              <div class="col">
+                 <div class="counter">
+                    <i class="fa fa-code fa-2x"></i>
+                    <p id="pvpDeaths"></p>
+                    <p class="count-text ">PVP Deaths</p>
+                 </div>
+              </div>
+              <div class="col">
+                 <div class="counter">
+                    <i class="fa fa-code fa-2x"></i>
+                    <p id="pvpSuicides"></p>
+                    <p class="count-text ">PVP Suicides</p>
+                 </div>
+              </div>
+
+
+
+           </div>
+
+           <div class="row text-center">
+
+              <div class="col">
+                 <div class="counter">
+                    <i class="fa fa-code fa-2x"></i>
+                    <p id="pvpWon"></p>
+                    <p class="count-text ">PVP Games Won</p>
+                 </div>
+              </div>
+              <div class="col">
+                 <div class="counter">
+                    <i class="fa fa-code fa-2x"></i>
+                    <p id="pvpKD"></p>
+                    <p class="count-text ">PVP K/D</p>
+                 </div>
+              </div>
+
+              <div class="col">
+                 <div class="counter">
+                    <i class="fa fa-code fa-2x"></i>
+                    <p id="pvpKDA"></p>
+                    <p class="count-text ">PVP (K+A)/D</p>
+                 </div>
+              </div>
+
+              <div class="col">
+                 <div class="counter">
+                    <i class="fa fa-code fa-2x"></i>
+                    <p id="pvpCollKD"></p>
+                    <p class="count-text ">PVP Collective K/D</p>
+                 </div>
+              </div>
+           </div>
+
+
+           <div class="row text-center">
+
+              <div class="col">
+                 <div class="counter">
+                    <i class="fa fa-code fa-2x"></i>
+                    <p id="pveKills"></p>
+                    <p class="count-text ">PVE Kills</p>
+                 </div>
+              </div>
+
+              <div class="col">
+                 <div class="counter">
+                    <i class="fa fa-code fa-2x"></i>
+                    <p id="pveDeaths"></p>
+                    <p class="count-text ">PVE Deaths</p>
+                 </div>
+              </div>
+
+              <div class="col">
+                 <div class="counter">
+                    <i class="fa fa-code fa-2x"></i>
+                    <p id="pveSuicides"></p>
+                    <p class="count-text ">PVE Suicides</p>
+                 </div>
+              </div>
+
+              <div class="col">
+                 <div class="counter">
+                    <i class="fa fa-code fa-2x"></i>
+                    <p id="pveOrbs"></p>
+                    <p class="count-text ">PVE Orbs Created</p>
+                 </div>
+              </div>
+
+              <div class="col">
+                 <div class="counter">
+                    <i class="fa fa-code fa-2x"></i>
+                    <p id="pveAdventures"></p>
+                    <p class="count-text ">PVE Adventures</p>
+                 </div>
+              </div>
+              <div class="col">
+                 <div class="counter">
+                    <i class="fa fa-code fa-2x"></i>
+                    <p id="pveHPE"></p>
+                    <p class="count-text ">PVE Heroic Public Events</p>
+                 </div>
+              </div>
+
+
+           </div>
+
+           <div class="row text-center">
+
+              <div class="col">
+                 <div class="counter">
+                    <img src="https://cdn.thetrackernetwork.com/destiny/common/destiny2_content/icons/46222d32033acc5766571b1435fa737c.png" width="34" height="34">
+                    <p id="pvpSeconds"></p>
+                    <p class="count-text ">PVP Time</p>
+                 </div>
+              </div>
+              <div class="col">
+                 <div class="counter">
+                    <img src="https://cdn.thetrackernetwork.com/destiny/common/destiny2_content/icons/2c475713250e7938500dac4b6bfeebed.png" width="34" height="34">
+                    <p id="pveSeconds"></p>
+                    <p class="count-text ">PVE Time</p>
+                 </div>
+              </div>
+
+           </div>
+
+           <div class="row text-center">
+              <div class="col">
+                 <div class="counter"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_md2de6954efb417d6571bea9202dbadfd.png" width="34" height="34">
+                    <p id="pvpWROOMs"></p>
+                    <p class="count-text ">We Ran out of Medals</p>
+                 </div>
+              </div>
+              <div class="col">
+                 <div class="counter"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_m3c7546b477f5378b3c605f4be6d45376.png" width="34" height="34">
+                    <p id="pvpUndefeats"></p>
+                    <p class="count-text ">Undefeated</p>
+                 </div>
+              </div>
+              <div class="col">
+                 <div class="counter"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_mf6bdc19ff454b545dec8e847696f8d57.png" width="34" height="34">
+                    <p id="pvpInvincible"></p>
+                    <p class="count-text ">Invincible</p>
+                 </div>
+              </div>
+              <div class="col">
+                 <div class="counter"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_mee5acb046145e887d1e7698fa0171603.png" width="34" height="34">
+                    <p id="pvpComeback"></p>
+                    <p class="count-text ">From the Jaws of Defeat</p>
+                 </div>
+              </div>
+              <div class="col">
+                 <div class="counter"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_m5bee79e64764fa4c94d795848d4362e6.png" width="34" height="34">
+                    <p id="pvpDoubles"></p>
+                    <p class="count-text ">Double Play</p>
+                 </div>
+              </div>
+           </div>
+           <div class="row text-center">
+              <div class="col">
+                 <div class="counter"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_ma60aa3835852cc63462a8539e9543419.png" width="34" height="34">
+                    <p id="pvpLightsOut"></p>
+                    <p class="count-text ">Lights Out</p>
+                 </div>
+              </div>
+              <div class="col">
+                 <div class="counter"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_m5be2652a5476087266bb9cf3f95e8372.png" width="34" height="34">
+                    <p id="pvpAnnihilation"></p>
+                    <p class="count-text ">Annihilation</p>
+                 </div>
+              </div>
+              <div class="col">
+                 <div class="counter"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_mdbab442edbc7e7ecd6a56f5ac1b1dd47.png" width="34" height="34">
+                    <p id="pvpRuthless"></p>
+                    <p class="count-text ">Ruthless</p>
+                 </div>
+              </div>
+              <div class="col">
+                 <div class="counter"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_me582cbac24c4cecd6f728afc67f882f9.png" width="34" height="34">
+                    <p id="pvpFightMe"></p>
+                    <p class="count-text ">Fight Me!</p>
+                 </div>
+              </div>
+              <div class="col">
+                 <div class="counter"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_m164efd3b6b3104df99c3b86a6522f68b.png" width="34" height="34">
+                    <p id="pvpNSFMF"></p>
+                    <p class="count-text ">Not So Fast, My Friend</p>
+                 </div>
+              </div>
+           </div>
+           <div class="row text-center slimrow">
+              <div class="col">
+                 <div class="counter">
+                    <i class="fa fa-code fa-2x"></i>
+                    <p id="membercounter"></p>
+                    <p class="count-text ">Data collected from members</p>
+                 </div>
+              </div>
+
+           </div>
+
+        </div>
 	</body>
 </html>
