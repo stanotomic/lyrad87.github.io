@@ -233,6 +233,8 @@ CharStatsDataLocations.pvpAnnihilation = 'Response.allPvP.allTime.medalMultiEnti
 CharStatsDataLocations.pvpRuthless = 'Response.allPvP.allTime.medalStreak5x.basic.value';
 CharStatsDataLocations.pvpFightMe = 'Response.allPvP.allTime.medalMatchMostDamage.basic.value';
 CharStatsDataLocations.pvpNSFMF = 'Response.allPvP.allTime.medalSuperShutdown.basic.value';
+CharStatsDataLocations.pvpSnipes = 'Response.allPvP.allTime.weaponKillsSniper.basic.value';
+
 CharStatsDataLocations.pveKills = 'Response.allPvE.allTime.kills.basic.value';
 CharStatsDataLocations.pveDeaths = 'Response.allPvE.allTime.deaths.basic.value';
 CharStatsDataLocations.pveSuicides = 'Response.allPvE.allTime.suicides.basic.value';
@@ -250,6 +252,7 @@ CharStatsDataLocations.gambitInvaderKills = 'Response.allPvECompetitive.allTime.
 CharStatsDataLocations.gambitMotesDep = 'Response.allPvECompetitive.allTime.motesDeposited.basic.value';
 CharStatsDataLocations.gambitMotesDenied = 'Response.allPvECompetitive.allTime.motesDenied.basic.value';
 CharStatsDataLocations.gambitPrimeDmg = 'Response.allPvECompetitive.allTime.primevalDamage.basic.value';
+CharStatsDataLocations.gambitKills = 'Response.allPvECompetitive.allTime.kills.basic.value';
 
 
           $(document).ready(function() {
@@ -370,6 +373,8 @@ CharStatsDataLocations.gambitPrimeDmg = 'Response.allPvECompetitive.allTime.prim
              $('#pvpRuthless').html((clanobject.pvpRuthless).toLocaleString('en'));
              $('#pvpFightMe').html((clanobject.pvpFightMe).toLocaleString('en'));
              $('#pvpNSFMF').html((clanobject.pvpNSFMF).toLocaleString('en'));
+             $('#pvpSnipes').html((clanobject.pvpSnipes).toLocaleString('en'));
+             
              $('#pveKills').html((clanobject.pveKills).toLocaleString('en'));
              $('#pveDeaths').html((clanobject.pveDeaths).toLocaleString('en'));
              $('#pveSuicides').html((clanobject.pveSuicides).toLocaleString('en'));
@@ -386,7 +391,8 @@ CharStatsDataLocations.gambitPrimeDmg = 'Response.allPvECompetitive.allTime.prim
              $('#gambitInvadingKills').html((clanobject.gambitInvadingKills).toLocaleString('en'));
              $('#gambitInvaderKills').html((clanobject.gambitInvaderKills).toLocaleString('en'));
              $('#gambitMotesDep').html((clanobject.gambitMotesDep).toLocaleString('en'));
-             $('#gambitMotesDenied').html((clanobject.gambitMotesDenied).toLocaleString('en'));    
+             $('#gambitMotesDenied').html((clanobject.gambitMotesDenied).toLocaleString('en'));
+             $('#gambitKills').html((clanobject.gambitKills).toLocaleString('en'));    
 
              $('#membercounter').html(clanobject.membersFetched + '/' + clanobject.memberCount);
               return;
@@ -519,6 +525,11 @@ CharStatsDataLocations.gambitPrimeDmg = 'Response.allPvECompetitive.allTime.prim
         </tr>
         <tr>
           <th scope="row" class="align-middle text-center"></th>
+          <td class="count-text align-middle">Sniper Kills</td>
+          <td id="pvpSnipes" class="align-middle text-left"></td>
+        </tr>
+        <tr>
+          <th scope="row" class="align-middle text-center"></th>
           <td class="count-text align-middle">Games Won</td>
           <td id="pvpWon" class="align-middle text-left"></td>
         </tr>
@@ -550,6 +561,11 @@ CharStatsDataLocations.gambitPrimeDmg = 'Response.allPvECompetitive.allTime.prim
           <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/18d85eb068d7d38e9dd996422dbd6b9e.png" width="30" height="30" style="filter: invert(50%);"></th>
           <td class="count-text align-middle">Total Time</td>
           <td  id="gambitSeconds" class="align-middle text-left"></td>
+        </tr>
+         <tr>
+          <th scope="row" class="align-middle text-center"></th>
+          <td class="count-text align-middle">Kills</td>
+          <td id="gambitKills" class="align-middle text-left"></td>
         </tr>
         <tr>
           <th scope="row" class="align-middle text-center"></th>
