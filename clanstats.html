@@ -247,8 +247,8 @@ CharStatsDataLocations.gambitSeconds = 'Response.allPvECompetitive.allTime.secon
 CharStatsDataLocations.gambitWins = 'Response.allPvECompetitive.allTime.activitiesWon.basic.value';
 CharStatsDataLocations.gambitInvadingKills = 'Response.allPvECompetitive.allTime.invasionKills.basic.value';
 CharStatsDataLocations.gambitInvaderKills = 'Response.allPvECompetitive.allTime.invaderKills.basic.value';
-CharStatsDataLocations.gambitInvaderDeaths = 'Response.allPvECompetitive.allTime.invaderDeaths.basic.value';
 CharStatsDataLocations.gambitMotesDep = 'Response.allPvECompetitive.allTime.motesDeposited.basic.value';
+CharStatsDataLocations.gambitMotesDenied = 'Response.allPvECompetitive.allTime.motesDenied.basic.value';
 CharStatsDataLocations.gambitPrimeDmg = 'Response.allPvECompetitive.allTime.primevalDamage.basic.value';
 
 
@@ -385,8 +385,8 @@ CharStatsDataLocations.gambitPrimeDmg = 'Response.allPvECompetitive.allTime.prim
              $('#gambitPrimeDmg').html((clanobject.gambitPrimeDmg).toLocaleString('en'));
              $('#gambitInvadingKills').html((clanobject.gambitInvadingKills).toLocaleString('en'));
              $('#gambitInvaderKills').html((clanobject.gambitInvaderKills).toLocaleString('en'));
-             $('#gambitInvaderDeaths').html((clanobject.gambitInvaderDeaths).toLocaleString('en'));
-             $('#gambitMotesDep').html((clanobject.gambitMotesDep).toLocaleString('en'));   
+             $('#gambitMotesDep').html((clanobject.gambitMotesDep).toLocaleString('en'));
+             $('#gambitMotesDenied').html((clanobject.gambitMotesDenied).toLocaleString('en'));    
 
              $('#membercounter').html(clanobject.membersFetched + '/' + clanobject.memberCount);
               return;
@@ -570,6 +570,11 @@ CharStatsDataLocations.gambitPrimeDmg = 'Response.allPvECompetitive.allTime.prim
           <th scope="row" class="align-middle text-center"></th>
           <td class="count-text align-middle">Motes Deposited</td>
           <td id="gambitMotesDep" class="align-middle text-left"></td>
+        </tr>
+         <tr>
+          <th scope="row" class="align-middle text-center"></th>
+          <td class="count-text align-middle">Motes Denied</td>
+          <td id="gambitMotesDenied" class="align-middle text-left"></td>
         </tr>
         <tr>
           <th scope="row" class="align-middle text-center"></th>
