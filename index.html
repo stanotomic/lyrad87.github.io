@@ -18,15 +18,15 @@
     <meta name="author" content="">
     <title>After8s</title>
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   
     <!-- Custom fonts for this template -->
     <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    
     <!-- Custom styles for this template -->
+	 <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/resume.min.css" rel="stylesheet">
-    <link href="css/roster.css" rel="stylesheet">
-    <link href="css/twitch.css" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -68,7 +68,7 @@
     </nav>
     <div class="container-fluid p-0">
         <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
-            <div class="my-auto">
+            <div class="my-auto noover">
                 <h1 class="mb-0">We are the
 
                 <span class="text-primary">After8s</span>
@@ -130,7 +130,7 @@
     <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="stats">
         <div class="my-auto">
             <h2 class="mb-2">Clan Stats</h2>
-            <iframe src="clanstats.html" width="800" height="500" frameborder="0"></iframe>
+            <iframe src="clanstats.html" width="100%" height="500" frameborder="0" class="scr"></iframe>
         </div>
     </section>
 
@@ -139,7 +139,7 @@
     <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="map">
         <div class="my-auto">
             <h2 class="mb-2">Get mapped</h2>
-            <iframe src="map/map.html" width="1050" height="550" frameborder="0"></iframe>
+            <iframe src="map/map.html" width="100%" height="550" frameborder="0"></iframe>
         </div>
     </section>
     
@@ -148,7 +148,7 @@
     <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="fat">
         <div class="my-auto">
             <h2 class="mb-2">Forsaken Activity Tracker (FAT)</h2>
-            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ1_GeTqm9yGwWoeSowKWju4eQC3X7TT65E1YvNC3F0eOWzB61Rs-E08s3fbQxOOqD3T1nmoKwKPNYF/pubhtml?widget=false&amp;headers=false&amp;chrome=false" width="637" height="578" frameborder="1"></iframe>
+            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ1_GeTqm9yGwWoeSowKWju4eQC3X7TT65E1YvNC3F0eOWzB61Rs-E08s3fbQxOOqD3T1nmoKwKPNYF/pubhtml?widget=false&amp;headers=false&amp;chrome=false" id="trak" width="637" height="578" class="scrollbar" frameborder="1"></iframe>
         </div>
     </section>
     
@@ -159,7 +159,7 @@
             <h2 class="mb-2">Vault of Class</h2>
             
             <!--BEGIN HEAD-->
-            <div id="container" style="width:75%;">
+            <div id="container" class="vc" style="width:75%;">
             <div id="accordion" style="width:60%;">
             <!--END HEAD-->
 
@@ -461,10 +461,10 @@
 </div>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
     <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
     <!-- Custom scripts for this template -->
     <script src="js/resume.min.js"></script>
     <script src="js/roster.js"></script>
