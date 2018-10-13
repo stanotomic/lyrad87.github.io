@@ -123,6 +123,7 @@ html{
 /* Create an active/current "tab button" class */
 .tab button.active {
   background-color: #222;
+  color: white;
 }
 
 /* Style the tab content */
