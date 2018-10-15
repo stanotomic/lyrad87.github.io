@@ -3,10 +3,10 @@ body {
 	height:100%;
 	float:left;
 	width:100%;
-	background-color: #555;
+	background-color: #2F363D;
 }
 tbody{
-	background-color: #222;
+	background-color: #13191E;
   color: white;
 }
 html{
@@ -30,7 +30,7 @@ html{
 	
 	.scr{
 	overflow-y: scroll;
-    display: block;
+  display: block;
 	}
 	
 
@@ -96,7 +96,7 @@ html{
     float: left;  
     width: 14rem;
     height: 100%;
-    background-color: #555;
+    background-color: #2F363D;
 }
 
 /* Style the buttons inside the tab */
@@ -110,7 +110,6 @@ html{
     outline: none;
     text-align: left;
     cursor: pointer;
-    transition: 0.3s;
     font-size: 17px;
 	  font-weight:bold;
 }
@@ -122,23 +121,25 @@ html{
 
 /* Create an active/current "tab button" class */
 .tab button.active {
-  background-color: #222;
+  background-color: #13191E;
   color: white;
+  border: 1px solid green;
+  border-right: none;
 }
 
 /* Style the tab content */
 .tabcontent {
     float: left;
     width: 70% !important;
-    border-left: none;
-    height: 400px;
+    height: 402px;
+    border: 1px solid green;
 }
 th {
-   border:0px !important;
+   border: 0px !important;
    width: 10% !important;
    }
 td {
-   border:0px !important;
+   border: 0px !important;
    width: 45% !important;
    height: 40px !important;
 }
