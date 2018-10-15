@@ -3,7 +3,7 @@ body {
 	height:100%;
 	float:left;
 	width:100%;
-	background-color: #666;
+	background-color: #555;
 }
 tbody{
 	background-color: #222;
@@ -16,7 +16,7 @@ html{
 }
 @media ( max-width: 850px ) {
 	.tab button{
-		    float: left !important;
+		float: left !important;
 		width: 50% !important;
 	}
 	.tab{
@@ -96,7 +96,7 @@ html{
     float: left;  
     width: 14rem;
     height: 100%;
-    background-color: #666;
+    background-color: #555;
 }
 
 /* Style the buttons inside the tab */
