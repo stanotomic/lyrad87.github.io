@@ -123,16 +123,13 @@ html{
 .tab button.active {
   background-color: #13191E;
   color: white;
-  border: 1px solid green;
-  border-right: none;
 }
 
 /* Style the tab content */
 .tabcontent {
     float: left;
     width: 70% !important;
-    height: 402px;
-    border: 1px solid green;
+    height: 400px;
 }
 th {
    border: 0px !important;
