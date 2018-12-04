@@ -20,7 +20,6 @@
         clan.unresolvedMemberNames = [];
         clan.membersWithLuna = 0;
         clan.membersWithMalf = 0;
-        clan.membersWithBlacksmith = 0;
         clan.membersWithChronicler = 0;
         clan.membersWithCursebreaker = 0;
         clan.membersWithDredgen = 0;
@@ -168,7 +167,6 @@
                 } else {
                     //599626507 is the hashid for the Luna triumph
                     //723502823 is the hashid for the Malf triumph
-                    //xxxxxxxxx is the hashid for the Blacksmith seal
                     //1754983323 is the hashid for the Chronicler seal
                     //1693645129 is the hashid for the Cursebreaker seal
                     //3798931976 is the hashid for the Dredgen seal
@@ -177,7 +175,6 @@
                     //2757681677 is the hashid for the Wayfarer seal
                     clan.membersWithLuna = clan.membersWithLuna + data.Response.profileRecords.data.records[599626507].objectives[0].progress;
                     clan.membersWithMalf = clan.membersWithMalf + data.Response.profileRecords.data.records[723502823].objectives[0].progress;
-                    clan.membersWithBlacksmith = clan.membersWithBlacksmith + (data.Response.profileRecords.data.records[xxxxxxxxx].objectives[0].complete==true ? 1:0);
                     clan.membersWithChronicler = clan.membersWithChronicler + (data.Response.profileRecords.data.records[1754983323].objectives[0].complete==true ? 1:0);
                     clan.membersWithCursebreaker = clan.membersWithCursebreaker + (data.Response.profileRecords.data.records[1693645129].objectives[0].complete==true ? 1:0);
                     clan.membersWithDredgen = clan.membersWithDredgen + (data.Response.profileRecords.data.records[3798931976].objectives[0].complete==true ? 1:0);
@@ -255,7 +252,6 @@
             $('#gambitNSD').html((clanobject.gambitNSD).toLocaleString('en'));
             $('#gambitMalfs').html(clanobject.membersWithMalf);
 
-            $('#sealBlacksmith').html(clanobject.membersWithBlacksmith);
             $('#sealChronicler').html(clanobject.membersWithChronicler);
             $('#sealCursebreaker').html(clanobject.membersWithCursebreaker);
             $('#sealDredgen').html(clanobject.membersWithDredgen);
@@ -558,11 +554,6 @@
         <div class="table-responsive-sm src">
             <table class="table table-sm">
                 <tbody>
-                <tr>
-                    <th scope="row" class="align-middle text-center"><img src="img/bungie_icons/ba.png" width="40" height="48"></th>
-                    <td class="count-text align-middle">Blacksmith</td>
-                    <td id="sealBlacksmith" class="align-middle text-left"></td>
-                </tr>
                 <tr>
                     <th scope="row" class="align-middle text-center"><img src="img/bungie_icons/chronicler.png" width="40" height="48"></th>
                     <td class="count-text align-middle">Chronicler</td>
