@@ -66,30 +66,10 @@
 
         $(document).ready(function () {
 
-            $('#tablink1').click(() = > {
-                openTab('tablink1', 't1'
-        )
-            ;
-        })
-            ;
-            $('#tablink2').click(() = > {
-                openTab('tablink2', 't2'
-        )
-            ;
-        })
-            ;
-            $('#tablink3').click(() = > {
-                openTab('tablink3', 't3'
-        )
-            ;
-        })
-            ;
-            $('#tablink4').click(() = > {
-                openTab('tablink4', 't4'
-        )
-            ;
-        })
-            ;
+            $('#tablink1').click(() => {openTab('tablink1', 't1');});
+            $('#tablink2').click(() => {openTab('tablink2', 't2');});
+            $('#tablink3').click(() => {openTab('tablink3', 't3');});
+            $('#tablink4').click(() => {openTab('tablink4', 't4');});
             //default
             $('#tablink1').click();
 
@@ -179,7 +159,6 @@
                     checkForSpecialAchievements(memberid); //try again
                 } else {
                     //599626507 is the hashid for lunas triumph
-                    //723502823 is the hashid for malf triumph
                     clan.membersWithLuna = clan.membersWithLuna + data.Response.profileRecords.data.records[599626507].objectives[0].progress;
                     clan.membersWithMalf = clan.membersWithMalf + data.Response.profileRecords.data.records[723502823].objectives[0].progress;
 
