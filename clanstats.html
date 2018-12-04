@@ -8,6 +8,7 @@
     <link href="css/clan_stats.css" rel="stylesheet" id="bootstrap-css">
 
     <script>
+
         //v4.0.0
         var bungieAPIkey = '0a11942f318647978979f13ad8aa53ee';
         var clan = {};
@@ -177,8 +178,8 @@
                 if (data.ErrorCode > 1 || !data.Response) {
                     checkForSpecialAchievements(memberid); //try again
                 } else {
-                    //599626507 is the hashid for the luna's howl triumph
-                    //723502823 is the hashid for the malf triumph
+                    //599626507 is the hashid for lunas triumph
+                    //723502823 is the hashid for malf triumph
                     clan.membersWithLuna = clan.membersWithLuna + data.Response.profileRecords.data.records[599626507].objectives[0].progress;
                     clan.membersWithMalf = clan.membersWithMalf + data.Response.profileRecords.data.records[723502823].objectives[0].progress;
 
@@ -332,7 +333,7 @@
             <tr>
                 <th scope="row" class="align-middle text-center"><img src="img/bungie_icons/nightfall.png" width="30" height="30" class="whitelogo"></th>
                 <td class="count-text align-middle">Total Nightfall Completions</td>
-                <td class="align-middle text-left">4979</td>
+                <td class="align-middle text-left">4571</td>
             </tr>
             <tr>
                 <th scope="row" class="align-middle text-center"><img src="img/bungie_icons/nightfall.png" width="30" height="30" class="whitelogo"></th>
@@ -378,11 +379,6 @@
                 <th scope="row" class="align-middle text-center"><img src="img/bungie_icons/crucible.png" width="30" height="30" class="whitelogo"></th>
                 <td class="count-text align-middle">Suicides</td>
                 <td id="pvpSuicides" class="align-middle text-left"></td>
-            </tr>
-            <tr>
-                <th scope="row" class="align-middle text-center"><img src="img/bungie_icons/sniper.png" width="30" height="30" class="whitelogo"></th>
-                <td class="count-text align-middle">Sniper Kills</td>
-                <td id="pvpSnipes" class="align-middle text-left"></td>
             </tr>
             <tr>
                 <th scope="row" class="align-middle text-center"><img src="img/bungie_icons/crucible.png" width="30" height="30" class="whitelogo"></th>
@@ -458,11 +454,6 @@
                 <td class="count-text align-middle">Total Primeval Damage</td>
                 <td id="gambitPrimeDmg" class="align-middle text-left"></td>
             </tr>
-             <tr>
-                <th scope="row" class="align-middle text-center"><img src="img/bungie_icons/malf.jpg" width="30" height="30" class="whitelogo"></th>
-                <td class="count-text align-middle">Malfeasance</td>
-                <td id="gambitMalfs" class="align-middle text-left">0</td>
-            </tr>
             <tr>
                 <th scope="row" class="align-middle text-center"><img src="img/bungie_icons/aoo.png" width="30" height="30"></th>
                 <td class="count-text align-middle">Army of One</td>
@@ -472,6 +463,11 @@
                 <th scope="row" class="align-middle text-center"><img src="img/bungie_icons/nsd.png" width="30" height="30"></th>
                 <td class="count-text align-middle">Never Say Die</td>
                 <td id="gambitNSD" class="align-middle text-left"></td>
+            </tr>
+            <tr>
+                <th scope="row" class="align-middle text-center"><img src="img/bungie_icons/malf.jpg" width="30" height="30" class="whitelogo"></th>
+                <td class="count-text align-middle">Malfeasance</td>
+                <td id="gambitMalfs" class="align-middle text-left">0</td>
             </tr>
             </tbody>
         </table>
