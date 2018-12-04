@@ -10,7 +10,7 @@
     <script>
            
              //v4.0.0
-          var bungieAPIkey = '0a11942f318647978979f13ad8aa53ee';
+           var bungieAPIkey = '0a11942f318647978979f13ad8aa53ee';
            var clan = {};
            clan.memberIds = [];
            clan.memberCount = 0;
@@ -103,6 +103,7 @@ CharStatsDataLocations.gambitNSD = 'Response.allPvECompetitive.allTime.medals_pv
                    $.each(clan.memberIds, function(index, memberid) {
                       getAccountData(memberid);
                       checkForLunasHowl(memberid);
+                      checkForMalf(memberid);
                     });
                  });
           });
@@ -157,8 +158,27 @@ CharStatsDataLocations.gambitNSD = 'Response.allPvECompetitive.allTime.medals_pv
                  if (data.ErrorCode > 1 || !data.Response) {
                    checkForLunasHowl(memberid); //try again
                 } else {
-                	//2362939119 is the hashid for lunas triumph
-                   clan.membersWithLuna = clan.membersWithLuna + data.Response.profileRecords.data.records[2362939119].objectives[0].progress;
+                	//599626507 is the hashid for lunas triumph
+                   clan.membersWithLuna = clan.membersWithLuna + data.Response.profileRecords.data.records[599626507].objectives[0].progress;
+                   outputClanData(clan);
+                }
+              });
+             return;
+          }
+
+        function checkForMalf(memberid) {
+              $.ajax({
+                url: 'https://www.bungie.net/Platform/Destiny2/2/Profile/' + memberid + '/?components=900',
+                headers: {
+                   'X-API-KEY': bungieAPIkey
+                },
+                 method: 'GET',
+              }).done(function(data) {
+                 if (data.ErrorCode > 1 || !data.Response) {
+                   checkForMalf(memberid); //try again
+                } else {
+                  //723502823 is the hashid for the Malfeasance triumph
+                   clan.membersWithMalf = clan.membersWithMalf + data.Response.profileRecords.data.records[723502823].objectives[0].progress;
                    outputClanData(clan);
                 }
               });
@@ -182,7 +202,7 @@ CharStatsDataLocations.gambitNSD = 'Response.allPvECompetitive.allTime.medals_pv
            }
            function outputClanData(clanobject) {
   
-     $('#pvpKills').html((clanobject.pvpKills).toLocaleString('en'));
+             $('#pvpKills').html((clanobject.pvpKills).toLocaleString('en'));
              $('#pvpAssists').html((clanobject.pvpAssists).toLocaleString('en'));
              $('#pvpWon').html((clanobject.pvpWon).toLocaleString('en'));
              $('#pvpDeaths').html((clanobject.pvpDeaths).toLocaleString('en'));
@@ -224,7 +244,8 @@ CharStatsDataLocations.gambitNSD = 'Response.allPvECompetitive.allTime.medals_pv
              $('#gambitKills').html((clanobject.gambitKills).toLocaleString('en'));
              $('#gambitAoO').html((clanobject.gambitAoO).toLocaleString('en'));  
              $('#gambitOverkillmonger').html((clanobject.gambitOverkillmonger).toLocaleString('en')); 
-             $('#gambitNSD').html((clanobject.gambitNSD).toLocaleString('en'));   
+             $('#gambitNSD').html((clanobject.gambitNSD).toLocaleString('en'));
+             $('#gambitMalf').html(clanobject.membersWithMalf); 
 
              $('#membercounter').html(clanobject.membersFetched + '/' + clanobject.memberCount);
               return;
@@ -425,9 +446,9 @@ CharStatsDataLocations.gambitNSD = 'Response.allPvECompetitive.allTime.medals_pv
           <td id="gambitMotesDenied" class="align-middle text-left"></td>
         </tr>
         <tr>
-          <th scope="row" class="align-middle text-center"><img src="img/bungie_icons/primeval.png" width="30" height="30" class="whitelogo"></th>
-          <td class="count-text align-middle">Total Primeval Damage</td>
-          <td id="gambitPrimeDmg" class="align-middle text-left"></td>
+          <th scope="row" class="align-middle text-center"><img src="img/bungie_icons/malf.jpg" width="30" height="30" class="whitelogo"></th>
+          <td class="count-text align-middle">Malfeasance</td>
+          <td id="gambitMalf" class="align-middle text-left">0</td>
         </tr>
         <tr>
           <th scope="row" class="align-middle text-center"><img src="img/bungie_icons/aoo.png" width="30" height="30"></th>
