@@ -148,7 +148,7 @@ function listMembers(rsp) {
                     '<td class="align-middle text-center"><a target="_blank" href="https://destinytracker.com/d2/profile/psn/' + name + '">View Stats</a></td>' + // DTR Profile
                     '<td class="align-middle text-center"><a target="_blank" href="https://raid.report/ps/' + name + '">View Clears</a></td>' + // Raid Report Profile 
                     '<td class="align-middle text-center"><a target="_blank" href="https://www.bungie.net/en/Profile/254/' + memberId + '/' + name + '">View Profile</a></td>' // Bungie Profile
-                    '<td class="align-middle text-center"><a target="_blank" href="https://www.wastedondestiny.com/' + memberId + '/' + name + '">Wasted Time</a></td>' // Wasted Time
+                    '<td class="align-middle text-center"><a target="_blank" href="https://www.wastedondestiny.com/' + memberId + '">Wasted Time</a></td>' // Wasted Time
                 );
 
             member.appendTo(list);
