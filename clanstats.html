@@ -184,7 +184,7 @@
                     //723502823 is the hashid for the Malf triumph
                     //3260604717 is the hashid for the NF collectible item
                     //3851137658 is the hashid for the Mountaintop triumph, but it's a character triumph (not account)
-                    //1973789098 is the emblemObjectiveHash for Flawless
+                    //720205407 is the hasid for Flawless y1 triumph
                     //851701008 is the hashid for Solo Throne triumph
                     //1754983323 is the hashid for the Chronicler seal
                     //1693645129 is the hashid for the Cursebreaker seal
@@ -195,7 +195,7 @@
                     
                     clan.membersWithLuna = clan.membersWithLuna + data.Response.profileRecords.data.records[599626507].objectives[0].progress;
                     clan.membersWithMalf = clan.membersWithMalf + data.Response.profileRecords.data.records[723502823].objectives[0].progress;
-                    //clan.membersFlawless = clan.membersFlawless + data.Response.profileRecords.data.records[1973789098].objectives[0].progress;
+                    clan.membersFlawless = clan.membersFlawless + data.Response.profileRecords.data.records[720205407].objectives[0].progress;
                     clan.membersSoloThrone = clan.membersSoloThrone + (data.Response.profileRecords.data.records[851701008].objectives[0].complete==true ? 1:0);
                     clan.membersWithChronicler = clan.membersWithChronicler + (data.Response.profileRecords.data.records[1754983323].objectives[0].complete==true ? 1:0);
                     clan.membersWithCursebreaker = clan.membersWithCursebreaker + (data.Response.profileRecords.data.records[1693645129].objectives[0].complete==true ? 1:0);
@@ -269,7 +269,7 @@
             $('#trialsAssists').html((clanobject.trialsAssists).toLocaleString('en'));
             $('#trialsKD').html((Math.round(clanobject.trialsKills / clanobject.trialsDeaths * 100) / 100).toLocaleString('en'));
             $('#trialsSeconds').html(convertSeconds(clanobject.trialsSeconds));
-            //$('#trialsFlawless').html((clanobject.membersFlawless).toLocaleString('en'));
+            $('#trialsFlawless').html((clanobject.membersFlawless).toLocaleString('en'));
 
             $('#pveKills').html((clanobject.pveKills).toLocaleString('en'));
             $('#pveDeaths').html((clanobject.pveDeaths).toLocaleString('en'));
