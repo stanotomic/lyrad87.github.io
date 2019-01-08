@@ -54,11 +54,6 @@
         CharStatsDataLocations.pvpSnipes = 'Response.allPvP.allTime.weaponKillsSniper.basic.value';
 
         CharStatsDataLocations.trialsWon = 'Response.trialsofthenine.allTime.activitiesWon.basic.value';
-        CharStatsDataLocations.trialsKills = 'Response.trialsofthenine.allTime.kills.basic.value';
-        CharStatsDataLocations.trialsDeaths = 'Response.trialsofthenine.allTime.deaths.basic.value';
-        CharStatsDataLocations.trialsAssists = 'Response.trialsofthenine.allTime.assists.basic.value';
-        CharStatsDataLocations.trialsKD = 'Response.trialsofthenine.allTime.killsDeathsRatio.basic.value';
-        CharStatsDataLocations.trialsSeconds = 'Response.trialsofthenine.allTime.secondsPlayed.basic.value';
 
         CharStatsDataLocations.pveKills = 'Response.allPvE.allTime.kills.basic.value';
         CharStatsDataLocations.pveDeaths = 'Response.allPvE.allTime.deaths.basic.value';
@@ -182,9 +177,7 @@
                 } else {
                     //599626507 is the hashid for the Luna triumph
                     //723502823 is the hashid for the Malf triumph
-                    //3260604717 is the hashid for the NF collectible item
-                    //3851137658 is the hashid for the Mountaintop triumph, but it's a character triumph (not account)
-                    //1973789098 is the emblemObjectiveHash for Flawless
+                    //720205407 is the hashid for the Flawless triumph
                     //851701008 is the hashid for Solo Throne triumph
                     //1754983323 is the hashid for the Chronicler seal
                     //1693645129 is the hashid for the Cursebreaker seal
@@ -192,10 +185,13 @@
                     //2182090828 is the hashid for the Rivensbane seal
                     //3369119720 is the hashid for the Unbroken seal
                     //2757681677 is the hashid for the Wayfarer seal
+                    //3260604717 is the hashid for the NF collectible item
                     
+                    //3851137658 is the hashid for the Mountaintop triumph, but its a charactertriumph (not account)
+
                     clan.membersWithLuna = clan.membersWithLuna + data.Response.profileRecords.data.records[599626507].objectives[0].progress;
                     clan.membersWithMalf = clan.membersWithMalf + data.Response.profileRecords.data.records[723502823].objectives[0].progress;
-                    //clan.membersFlawless = clan.membersFlawless + data.Response.profileRecords.data.records[1973789098].objectives[0].progress;
+                    clan.membersFlawless = clan.membersFlawless + data.Response.profileRecords.data.records[720205407].objectives[0].progress;
                     clan.membersSoloThrone = clan.membersSoloThrone + (data.Response.profileRecords.data.records[851701008].objectives[0].complete==true ? 1:0);
                     clan.membersWithChronicler = clan.membersWithChronicler + (data.Response.profileRecords.data.records[1754983323].objectives[0].complete==true ? 1:0);
                     clan.membersWithCursebreaker = clan.membersWithCursebreaker + (data.Response.profileRecords.data.records[1693645129].objectives[0].complete==true ? 1:0);
@@ -264,12 +260,7 @@
             $('#pvpMT').html(clanobject.membersWithMountaintop);
 
             $('#trialsWon').html((clanobject.trialsWon).toLocaleString('en'));
-            $('#trialsKills').html((clanobject.trialsKills).toLocaleString('en'));
-            $('#trialsDeaths').html((clanobject.trialsDeaths).toLocaleString('en'));
-            $('#trialsAssists').html((clanobject.trialsAssists).toLocaleString('en'));
-            $('#trialsKD').html((Math.round(clanobject.trialsKills / clanobject.trialsDeaths * 100) / 100).toLocaleString('en'));
-            $('#trialsSeconds').html(convertSeconds(clanobject.trialsSeconds));
-            //$('#trialsFlawless').html((clanobject.membersFlawless).toLocaleString('en'));
+            $('#trialsFlawless').html((clanobject.membersFlawless).toLocaleString('en'));
 
             $('#pveKills').html((clanobject.pveKills).toLocaleString('en'));
             $('#pveDeaths').html((clanobject.pveDeaths).toLocaleString('en'));
@@ -540,36 +531,16 @@
         <div class="table-responsive-sm src">
             <table class="table table-sm">
                 <tbody>
-                	<tr>
-                    <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/1ae9075a5b701c1b6fb6bcf27fff3d6f.png" width="30" height="30" class="whitelogo"></th>
-                    <td class="count-text align-middle">Total Time</td>
-                    <td id="trialsSeconds" class="align-middle text-left"></td>
-                </tr>
                 <tr>
                     <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/1ae9075a5b701c1b6fb6bcf27fff3d6f.png" width="30" height="30"></th>
                     <td class="count-text align-middle">Games Won</td>
                     <td id="trialsWon" class="align-middle text-left">0</td>
                 </tr>
                 <tr>
-               		<th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/1ae9075a5b701c1b6fb6bcf27fff3d6f.png" width="30" height="30" class="whitelogo"></th>
-                	<td class="count-text align-middle">Kills</td>
-                	<td id="trialsKills" class="align-middle text-left"></td>
-            	</tr>
-                <tr>
-                    <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/1ae9075a5b701c1b6fb6bcf27fff3d6f.png" width="30" height="30" class="whitelogo"></th>
-                    <td class="count-text align-middle">Assists</td>
-                    <td id="trialsAssists" class="align-middle text-left"></td>
-                </tr>
-                <tr>
-                    <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/1ae9075a5b701c1b6fb6bcf27fff3d6f.png" width="30" height="30" class="whitelogo"></th>
-                    <td class="count-text align-middle">K/D</td>
-                    <td id="trialsKD" class="align-middle text-left"></td>
-                </tr>
-                <tr>
                     <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/1f5e4a3cfeaca5fd6465ffd15b81ffa6.jpg" width="30" height="30" class="whitelogo"></th>
                     <td class="count-text align-middle">Flawless Runs</td>
-                    <td id="trialsFlawless" class="align-middle text-left"></td>
-                </tr>  
+                    <td id="trialsFlawless" class="align-middle text-left">0</td>
+            </tr>   
                 </tbody>
             </table>
         </div>
