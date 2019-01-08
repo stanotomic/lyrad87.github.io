@@ -176,7 +176,6 @@
                 } else {
                     //599626507 is the hashid for the Luna triumph
                     //723502823 is the hashid for the Malf triumph
-                    //3851137658 is the hashid for the Mountaintop triumph
                     //1973789098 is the emblemObjectiveHash for Flawless
                     //851701008 is the hashid for Solo Throne triumph
                     //1754983323 is the hashid for the Chronicler seal
@@ -185,10 +184,11 @@
                     //2182090828 is the hashid for the Rivensbane seal
                     //3369119720 is the hashid for the Unbroken seal
                     //2757681677 is the hashid for the Wayfarer seal
+                    
+                    //3851137658 is the hashid for the Mountaintop triumph, but its a charactertriumph (not account)
                     clan.membersWithLuna = clan.membersWithLuna + data.Response.profileRecords.data.records[599626507].objectives[0].progress;
                     clan.membersWithMalf = clan.membersWithMalf + data.Response.profileRecords.data.records[723502823].objectives[0].progress;
-                    clan.membersWithMountaintop = clan.membersWithMountaintop + data.Response.profileRecords.data.records[3851137658].objectives[0].progress;
-                    clan.membersFlawless = clan.membersFlawless + data.Response.profileRecords.data.records[1973789098].objectives[0].progress;
+                    //clan.membersFlawless = clan.membersFlawless + data.Response.profileRecords.data.records[1973789098].objectives[0].progress;
                     clan.membersSoloThrone = clan.membersSoloThrone + (data.Response.profileRecords.data.records[851701008].objectives[0].complete==true ? 1:0);
                     clan.membersWithChronicler = clan.membersWithChronicler + (data.Response.profileRecords.data.records[1754983323].objectives[0].complete==true ? 1:0);
                     clan.membersWithCursebreaker = clan.membersWithCursebreaker + (data.Response.profileRecords.data.records[1693645129].objectives[0].complete==true ? 1:0);
@@ -196,6 +196,15 @@
                     clan.membersWithRivensbane = clan.membersWithRivensbane + (data.Response.profileRecords.data.records[2182090828].objectives[0].complete==true ? 1:0);
                     clan.membersWithUnbroken = clan.membersWithUnbroken + (data.Response.profileRecords.data.records[3369119720].objectives[0].complete==true ? 1:0);
                     clan.membersWithWayfarer = clan.membersWithWayfarer + (data.Response.profileRecords.data.records[2757681677].objectives[0].complete==true ? 1:0);
+
+                    
+                    //check each character record for this account
+                    $.each(data.Response.characterRecords.data, function (index, value) {
+                        if (value.records[3851137658].objectives[0].progress) {
+                            clan.membersWithMountaintop = clan.membersWithMountaintop + 1;
+                            return false; 
+                        }
+                    });
 
                     outputClanData(clan);
                 }
