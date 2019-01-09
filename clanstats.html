@@ -53,13 +53,6 @@
 
         CharStatsDataLocations.pvpSnipes = 'Response.allPvP.allTime.weaponKillsSniper.basic.value';
 
-        CharStatsDataLocations.trialsWon = 'Response.trialsofthenine.allTime.activitiesWon.basic.value';
-        CharStatsDataLocations.trialsKills = 'Response.trialsofthenine.allTime.kills.basic.value';
-        CharStatsDataLocations.trialsDeaths = 'Response.trialsofthenine.allTime.deaths.basic.value';
-        CharStatsDataLocations.trialsAssists = 'Response.trialsofthenine.allTime.assists.basic.value';
-        CharStatsDataLocations.trialsKD = 'Response.trialsofthenine.allTime.killsDeathsRatio.basic.value';
-        CharStatsDataLocations.trialsSeconds = 'Response.trialsofthenine.allTime.secondsPlayed.basic.value';
-
         CharStatsDataLocations.pveKills = 'Response.allPvE.allTime.kills.basic.value';
         CharStatsDataLocations.pveDeaths = 'Response.allPvE.allTime.deaths.basic.value';
         CharStatsDataLocations.pveSuicides = 'Response.allPvE.allTime.suicides.basic.value';
@@ -91,7 +84,6 @@
             $('#tablink3').click(() => {openTab('tablink3', 't3');});
             $('#tablink4').click(() => {openTab('tablink4', 't4');});
             $('#tablink5').click(() => {openTab('tablink5', 't5');});
-            $('#tablink6').click(() => {openTab('tablink6', 't6');});
             //default
             $('#tablink1').click();
 
@@ -145,7 +137,7 @@
                 },
                 data: {
                     groups: "1,3",//general,medals
-                    modes: '4,5,7,39,64' //raid,allpvp,allpve,trials,allpvecomp(gambit)
+                    modes: '4,5,7,64' //raid,allpvp,allpve,allpvecomp(gambit)
                 },
                 method: 'GET',
             }).done(function (data) {
@@ -263,12 +255,6 @@
             $('#pvpNFs').html(clanobject.membersWithNF);
             $('#pvpMT').html(clanobject.membersWithMountaintop);
 
-            $('#trialsWon').html((clanobject.trialsWon).toLocaleString('en'));
-            $('#trialsKills').html((clanobject.trialsKills).toLocaleString('en'));
-            $('#trialsDeaths').html((clanobject.trialsDeaths).toLocaleString('en'));
-            $('#trialsAssists').html((clanobject.trialsAssists).toLocaleString('en'));
-            $('#trialsKD').html((Math.round(clanobject.trialsKills / clanobject.trialsDeaths * 100) / 100).toLocaleString('en'));
-            $('#trialsSeconds').html(convertSeconds(clanobject.trialsSeconds));
             $('#trialsFlawless').html((clanobject.membersFlawless).toLocaleString('en'));
 
             $('#pveKills').html((clanobject.pveKills).toLocaleString('en'));
@@ -325,9 +311,8 @@
     <button id="tablink1" class="tablinks">Vanguard <img src="assets/img/bungie_icons/vanguard.png" width="50px" height="50px" class="greylogo" style="float: right; margin:-10px 0 -10px 0;"></button>
     <button id="tablink2" class="tablinks">Crucible <img src="assets/img/bungie_icons/crucible.png" width="50px" height="50px" class="greylogo" style="float: right; margin:-10px 0 -10px 0;"></button>
     <button id="tablink3" class="tablinks">Medals <img src="assets/img/bungie_icons/medals.png" width="50px" height="50px" class="greylogo" style="float: right; margin:-10px 0 -10px 0;"></button>
-    <button id="tablink4" class="tablinks">Trials <img src="https://www.bungie.net/common/destiny2_content/icons/1ae9075a5b701c1b6fb6bcf27fff3d6f.png" width="50px" height="50px" class="greylogo" style="float: right; margin:-10px 0 -10px 0;"></button>
-    <button id="tablink5" class="tablinks">Gambit <img src="assets/img/bungie_icons/gambit.png" width="50px" height="50px" class="greylogo" style="float: right; margin:-10px 0 -10px 0;"></button>
-    <button id="tablink6" class="tablinks">Seals </button>
+    <button id="tablink4" class="tablinks">Gambit <img src="assets/img/bungie_icons/gambit.png" width="50px" height="50px" class="greylogo" style="float: right; margin:-10px 0 -10px 0;"></button>
+    <button id="tablink5" class="tablinks">Seals </button>
     
 
     <div class="spinner">
@@ -459,6 +444,11 @@
                 <td id="pvpSnipes" class="align-middle text-left"></td>
             </tr>
             <tr>
+                <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/1f5e4a3cfeaca5fd6465ffd15b81ffa6.jpg" width="30" height="30" class="whitelogo"></th>
+                <td class="count-text align-middle">Flawless Runs</td>
+                <td id="trialsFlawless" class="align-middle text-left"></td>
+                </tr>
+            <tr>
                 <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/ca86c130898a90ed19a0a317df8ab389.jpg" width="30" height="30"></th>
                 <td class="count-text align-middle">Luna's Howl</td>
                 <td id="pvpLunas" class="align-middle text-left">0</td>
@@ -537,45 +527,6 @@
 </div>
 
 <div id="t4" class="tabcontent">
-        <div class="table-responsive-sm src">
-            <table class="table table-sm">
-                <tbody>
-                	<tr>
-                    <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/1ae9075a5b701c1b6fb6bcf27fff3d6f.png" width="30" height="30" class="whitelogo"></th>
-                    <td class="count-text align-middle">Total Time</td>
-                    <td id="trialsSeconds" class="align-middle text-left"></td>
-                </tr>
-                <tr>
-                    <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/1ae9075a5b701c1b6fb6bcf27fff3d6f.png" width="30" height="30"></th>
-                    <td class="count-text align-middle">Games Won</td>
-                    <td id="trialsWon" class="align-middle text-left">0</td>
-                </tr>
-                <tr>
-               		<th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/1ae9075a5b701c1b6fb6bcf27fff3d6f.png" width="30" height="30" class="whitelogo"></th>
-                	<td class="count-text align-middle">Kills</td>
-                	<td id="trialsKills" class="align-middle text-left"></td>
-            	</tr>
-                <tr>
-                    <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/1ae9075a5b701c1b6fb6bcf27fff3d6f.png" width="30" height="30" class="whitelogo"></th>
-                    <td class="count-text align-middle">Assists</td>
-                    <td id="trialsAssists" class="align-middle text-left"></td>
-                </tr>
-                <tr>
-                    <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/1ae9075a5b701c1b6fb6bcf27fff3d6f.png" width="30" height="30" class="whitelogo"></th>
-                    <td class="count-text align-middle">K/D</td>
-                    <td id="trialsKD" class="align-middle text-left"></td>
-                </tr>
-                <tr>
-                    <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/1f5e4a3cfeaca5fd6465ffd15b81ffa6.jpg" width="30" height="30" class="whitelogo"></th>
-                    <td class="count-text align-middle">Flawless Runs</td>
-                    <td id="trialsFlawless" class="align-middle text-left"></td>
-                </tr>  
-                </tbody>
-            </table>
-        </div>
-</div>
-
-<div id="t5" class="tabcontent">
     <div class="table-responsive-sm src">
         <table class="table table-sm">
             <tbody>
@@ -644,7 +595,7 @@
     </div>
 </div>
 
-<div id="t6" class="tabcontent">
+<div id="t5" class="tabcontent">
         <div class="table-responsive-sm src">
             <table class="table table-sm">
                 <tbody>
