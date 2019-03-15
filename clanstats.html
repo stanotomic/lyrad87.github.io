@@ -125,7 +125,7 @@
     function getAccountData(memberid) {
         //track number of tries for every member
         clan.retryCounter[memberid] = clan.retryCounter[memberid] + 1;
-        if (clan.retryCounter[memberid] > 10) {
+        if (clan.retryCounter[memberid] > 4) {
             //give up on him =/
             clan.unresolvedMemberNames.push(clan.memberName[memberid]);
             return;
@@ -162,9 +162,9 @@
     // - add setter line for this new id in outputClanData()
 
     function checkForSpecialAchievements(memberid) {
-
-        var aquiredCollectibleStateValues = [0, 16, 8, 64, 80];
-
+        
+        var aquiredCollectibleStateValues = [0, 8, 16, 64, 80];
+        
         $.ajax({
             url: 'https://www.bungie.net/Platform/Destiny2/2/Profile/' + memberid + '/?components=800,900',
             headers: {
@@ -174,7 +174,7 @@
         }).done(function(data) {
             if (data.ErrorCode > 1 || !data.Response || typeof data.Response.profileCollectibles.data === 'undefined') {
                 clan.retryCounter[memberid]++;
-                if (clan.retryCounter[memberid] > 10) {
+                if (clan.retryCounter[memberid] > 4) {
                     //give up on him =/
                     clan.unresolvedMemberNames.push(clan.memberName[memberid]);
                     return;
@@ -211,7 +211,7 @@
                 clan.membersWithBlacksmith = clan.membersWithBlacksmith + (data.Response.profileRecords.data.records[2053985130].objectives[0].complete == true ? 1 : 0);
                 clan.membersWithReckoner = clan.membersWithReckoner + (data.Response.profileRecords.data.records[1313291220].objectives[0].complete == true ? 1 : 0);
 
-
+               
                 clan.membersWithNF = clan.membersWithNF + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[3260604717].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
                 clan.membersWithRecluse = clan.membersWithRecluse + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[2335550020].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
                 clan.membersWithThorn = clan.membersWithThorn + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[4009683574].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
