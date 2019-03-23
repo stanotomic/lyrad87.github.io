@@ -336,3 +336,19 @@ body {
     max-width: 680px;
     padding: 0 15px
 }
+
+.light {
+    font-size: 16px
+}
+
+.level {
+    font-size: 10px;
+    line-height: 12px
+}
+
+.character {
+    background-size: cover;
+    width: 60px;
+    height: 60px;
+    background-repeat: no-repeat
+}

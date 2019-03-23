@@ -104,19 +104,20 @@ function listMembers(rsp) {
                 joinDate = rsp[i].joinDate,
                 joined = joinDate.substring(0, joinDate.indexOf('T')),
                 online = rsp[i].isOnline
-                icon = profile.iconPath,
+                icon = profile.emblemPath,
                 memberId = profile.membershipId,
                 memberType = rsp[i].memberType,
                 destinyId = rsp[i].destinyUserInfo.membershipId,
+                charId = rsp[i].destinyUserInfo.characterId,
                 rank = rsp[i].memberType,
                 role = '';
 
             if (rank == 2) {
-                role = "Member";
+                role = "<font color=\"#FFFFFF\">" + "Member" + " </font>";
             } else if (rank == 3) {
-                role = "Admin";
+                role = "<font color=\"#F1C410\">" + "Admin" + " </font>";
             } else if (rank == 5) {
-                role = "Founder"
+                role = "<font color=\"#F1C410\">" + "Founder" + " </font>"
             }
 
             // configure DOM node and add to page
@@ -124,23 +125,23 @@ function listMembers(rsp) {
                 .attr({
                     'class': 'text-left member',
                     'href': '/player.html?bungieId=' + memberId + '&destinyId=' + destinyId + '&joined=' + joined + '&rank=' + rank,
-                    'title': 'See player profile for ' + name,
                     'data-joined': joined.replace(/-/g, ''),
                     'data-username': name,
                     'data-online': 'false',
                     'data-searchable': name,
                 })
                 .html(
-                    '<th class="align-middle" scope="row"><img src="https://www.bungie.net' + icon + '" style="width: 30px; height:30px"></th>' + // Bungie avatar
                     '<td class="align-middle">' + name + '</td>' + // PSN username
-                    '<td class="align-middle text-warning">' + role + '</td>' + // Role - Not the Discord role yet
+                    '<td class="align-middle">' + role + '</td>' + // Role - Not the Discord role yet
                     '<td class="align-middle">' + joined.replace(/-/g, '/') + '</td>' + // Joined date
                     '<td class="align-middle member-status"><span class="member-online" id="status-' + memberId + '">' + online + '</span></td>' + // In-game online status
+
+                    '<td class="align-middle"><div class="d-flex justify-content-center"> <div class="d-flex flex-column justify-content-center"> <a href="https://www.bungie.net/en/Gear/2/' + destinyId +'/" target="_blank" class="text-decoration-none border border-2 border-success ml-1 mr-2"> <div class="character d-flex flex-column justify-content-center align-items-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url(https://bungie.net/common/destiny2_content/icons/55a5cc70efd99a26381fb4f0c723b868.jpg);"> <div class="light text-white font-weight-bold">650</div><div class="level text-white">Warlock</div></div></a> </div><div class="d-flex flex-column justify-content-center"> <a href="https://www.bungie.net/en/Gear/2/' + destinyId + '/" target="_blank" class="text-decoration-none border border-2 border-success ml-1 mr-2"> <div class="character d-flex flex-column justify-content-center align-items-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url(https://bungie.net/common/destiny2_content/icons/1879398bc8a50d47cdd14cc746c073e1.jpg);"> <div class="light text-white font-weight-bold">650</div><div class="level text-white">Hunter</div></div></a> </div><div class="d-flex flex-column justify-content-center"> <a href="https://www.bungie.net/en/Gear/2/' + destinyId +'/" target="_blank" class="text-decoration-none border border-2 border-success ml-1 mr-2"> <div class="character d-flex flex-column justify-content-center align-items-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url(https://bungie.net/common/destiny2_content/icons/a54c79ffd33a1b7cdb2d37fc003aed8b.jpg);"> <div class="light text-white font-weight-bold">650</div><div class="level text-white">Titan</div></div></a> </div></div></td>' + // Destiny toons
+                    
                     '<td class="align-middle text-center">'+((!twitch[name]) ? '' : '<a target="_blank" href="https://twitch.tv/' + twitch[name] +'"><i class="fab fa-twitch fa-lg" style="color:white"></i></a>')+'</td>' +  // Twitch - yes, show icon | no, show nothing
                     '<td class="align-middle text-center">'+('<a target="_blank" href="https://www.wastedondestiny.com/2_' + destinyId +'"><i class="far fa-clock fa-lg" style="color:white"></i></a>')+'</td>' + // Wasted Time on Destiny
                     '<td class="align-middle text-center"><a target="_blank" href="https://destinytracker.com/d2/profile/psn/' + name + '">Stats</a></td>' + // DTR Profile
-                    '<td class="align-middle text-center"><a target="_blank" href="https://raid.report/ps/' + name + '">Clears</a></td>' + // Raid Report Profile
-                    '<td class="align-middle text-center"><a target="_blank" href="https://www.bungie.net/en/Profile/254/' + memberId + '/' + name + '">Profile</a></td>' // Bungie Profile
+                    '<td class="align-middle text-center"><a target="_blank" href="https://raid.report/ps/' + name + '">Clears</a></td>' // Raid Report Profile
                 );
 
             member.appendTo(list);
