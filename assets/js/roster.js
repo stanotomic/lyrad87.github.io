@@ -219,6 +219,6 @@ function listMembers(rsp) {
 
     }
 
-    $('#member-count').text(on + ' / ' + rsp.length + ' Members Online');
+    $('#member-count').text(on + ' / ' + rsp.length + ' Online');
 
 }
