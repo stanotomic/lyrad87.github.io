@@ -10,14 +10,14 @@ twitch["Intemerata_"] = "intemerata_";
 twitch["ronobear87"] = "ronobear87";
 twitch["Fryde"] = "fry_de";
 twitch["iHackEpic"] = "ihackepic";
-twitch["Hushspesh"] = "hushspesh101";
-twitch["LyRaD87cP"] = "dazzah87";
-twitch["Mini-B0rg40"] = "terrybjsr27";
+twitch["Aliashush"] = "hushspesh101";
+twitch["dazzah87"] = "dazzah87";
+twitch["TezzaBear-JSR40"] = "terrybjsr27";
 twitch["Deecs259"] = "deecs259";
 twitch["CristianoRicky16"] = "cristianoricky1";
 twitch["murdie1"] = "gabbercrew";
 twitch["Dannilad09"] = "dannilad";
-twitch["XanderLuke"] = "andimgonex";
+twitch["Gonasm"] = "andimgonex";
 twitch["PrOme-"] = "prome84";
 $.when($.ajax({
     url: "https://www.bungie.net/platform/GroupV2/" + a8GroupId + "/Members/",
