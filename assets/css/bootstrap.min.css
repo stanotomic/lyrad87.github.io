@@ -5023,8 +5023,8 @@ fieldset:disabled a.btn {
   box-shadow: 0 0 15px rgba(10, 10, 10, 0.3);
   top: 100px;
   left: 1.25rem;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 }
 
 @media (min-width:576px) {
