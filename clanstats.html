@@ -32,6 +32,7 @@
         clan.membersWithWayfarer = 0;
         clan.membersWithBlacksmith = 0;
         clan.membersWithReckoner = 0;
+        clan.membersWithShadow = 0;
         var CharStatsDataLocations = {};
         CharStatsDataLocations.pvpKills = "Response.allPvP.allTime.kills.basic.value";
         CharStatsDataLocations.pvpAssists = "Response.allPvP.allTime.assists.basic.value";
@@ -175,6 +176,7 @@ function checkForSpecialAchievements(memberid) {
             clan.membersWithWayfarer = clan.membersWithWayfarer + (data.Response.profileRecords.data.records[2757681677].objectives[0].complete == true ? 1 : 0);
             clan.membersWithBlacksmith = clan.membersWithBlacksmith + (data.Response.profileRecords.data.records[2053985130].objectives[0].complete == true ? 1 : 0);
             clan.membersWithReckoner = clan.membersWithReckoner + (data.Response.profileRecords.data.records[1313291220].objectives[0].complete == true ? 1 : 0);
+            clan.membersWithShadow = clan.membersWithShadow + (data.Response.profileRecords.data.records[1883929036].objectives[0].complete == true ? 1 : 0);
             clan.membersWithNF = clan.membersWithNF + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[3260604717].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithRecluse = clan.membersWithRecluse + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[2335550020].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithThorn = clan.membersWithThorn + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[4009683574].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
@@ -262,6 +264,7 @@ function outputClanData(clanobject) {
     $("#sealWayfarer").html(clanobject.membersWithWayfarer);
     $("#sealBlacksmith").html(clanobject.membersWithBlacksmith);
     $("#sealReckoner").html(clanobject.membersWithReckoner);
+    $("#sealShadow").html(clanobject.membersWithShadow);
     $("#membercounter").html(clanobject.membersFetched + "/" + clanobject.memberCount);
     return
 }
@@ -562,6 +565,11 @@ function openTab(btn, tabName) {
         <div class="table-responsive-sm src">
             <table class="table table-sm">
                 <tbody>
+                	<tr>
+                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/2e3c60186f7aa64107d843ed697fad1f.png" width="40" height="48"></th>
+                        <td class="count-text align-middle">A Shadow Rises</td>
+                        <td id="sealShadow" class="align-middle text-left">0</td>
+                    </tr>
                     <tr>
                         <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/1a6e93e560351ceb4b5a3bb76504fed6.png" width="40" height="48"></th>
                         <td class="count-text align-middle">Blacksmith</td>
