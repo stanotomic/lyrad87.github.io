@@ -22,6 +22,7 @@
         clan.membersWithMountaintop = 0;
         clan.membersWithRecluse = 0;
         clan.membersWithThorn = 0;
+        clan.membersWithRevoker = 0;
         clan.membersSoloThrone = 0;
         clan.membersFlawless = 0;
         clan.membersWithChronicler = 0;
@@ -179,6 +180,7 @@ function checkForSpecialAchievements(memberid) {
             clan.membersWithShadow = clan.membersWithShadow + (data.Response.profileRecords.data.records[1883929036].objectives[0].complete == true ? 1 : 0);
             clan.membersWithNF = clan.membersWithNF + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[3260604717].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithRecluse = clan.membersWithRecluse + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[2335550020].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
+            clan.membersWithRevoker = clan.membersWithRevoker + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[3066162258].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithThorn = clan.membersWithThorn + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[4009683574].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             $.each(data.Response.characterRecords.data, function(index, value) {
                 if (typeof value.records[599626507] !== "undefined" && value.records[599626507].objectives[0].progress) {
@@ -235,6 +237,7 @@ function outputClanData(clanobject) {
     $("#pvpMT").html(clanobject.membersWithMountaintop);
     $("#pvpRec").html(clanobject.membersWithRecluse);
     $("#pvpThorn").html(clanobject.membersWithThorn);
+    $("#pvpRevoker").html(clanobject.membersWithRevoker);
     $("#trialsFlawless").html(clanobject.membersFlawless.toLocaleString("en"));
     $("#pveKills").html(clanobject.pveKills.toLocaleString("en"));
     $("#pveDeaths").html(clanobject.pveDeaths.toLocaleString("en"));
@@ -402,7 +405,7 @@ function openTab(btn, tabName) {
                         <td id="trialsFlawless" class="align-middle text-left"></td>
                     </tr>
                     <tr>
-                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/b9ce2ce37e1356cd3898bb715089ea04.jpg" width="30" height="30"></th>
+                        <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/3e518a2eb8ba6888ba723866af55ce8b.jpg" width="30" height="30"></th>
                         <td class="count-text align-middle">Thorn</td>
                         <td id="pvpThorn" class="align-middle text-left"></td>
                     </tr>
@@ -425,6 +428,11 @@ function openTab(btn, tabName) {
                         <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/8f5bedcac2559d153f6df266d9f4d04b.jpg" width="30" height="30"></th>
                         <td class="count-text align-middle">The Recluse</td>
                         <td id="pvpRec" class="align-middle text-left"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/929777eec5d64e8d26742bb2bf2ed63b.jpg" width="30" height="30"></th>
+                        <td class="count-text align-middle">Revoker</td>
+                        <td id="pvpRevoker" class="align-middle text-left"></td>
                     </tr>
                 </tbody>
             </table>
