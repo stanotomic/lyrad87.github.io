@@ -30,6 +30,7 @@
         clan.membersWithOneKay = 0;
         clan.membersWithAN = 0;
         clan.membersWithRevoker = 0;
+        clan.membersWithMalf = 0;
         clan.membersSoloThrone = 0;
         clan.membersFlawless = 0;
         clan.membersWithChronicler = 0;
@@ -200,6 +201,7 @@ function checkForSpecialAchievements(memberid) {
             clan.membersWithDEL = clan.membersWithDEL + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1639266456].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithOneKay = clan.membersWithOneKay + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[199171385].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithAN = clan.membersWithAN + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[2220014607].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
+            clan.membersWithMalf = clan.membersWithMalf + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1660030045].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithHush = clan.membersWithHush + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1670904512].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             $.each(data.Response.characterRecords.data, function(index, value) {
                 if (typeof value.records[599626507] !== "undefined" && value.records[599626507].objectives[0].progress) {
@@ -284,6 +286,7 @@ function outputClanData(clanobject) {
     $("#gambitAoO").html(clanobject.gambitAoO.toLocaleString("en"));
     $("#gambitOverkillmonger").html(clanobject.gambitOverkillmonger.toLocaleString("en"));
     $("#gambitNSD").html(clanobject.gambitNSD.toLocaleString("en"));
+    $("#gambitMalf").html(clanobject.membersWithMalf);
     $("#sealChronicler").html(clanobject.membersWithChronicler);
     $("#sealCursebreaker").html(clanobject.membersWithCursebreaker);
     $("#sealDredgen").html(clanobject.membersWithDredgen);
@@ -633,10 +636,15 @@ function openTab(btn, tabName) {
                         <td class="count-text align-middle">One Thousand Voices</td>
                         <td id="pveonekay" class="align-middle text-left"></td>
                     </tr>
-                     <tr>
+                    <tr>
                         <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/474558c3e58e56b9a351c4064a74c5ca.jpg" width="30" height="30"></th>
                         <td class="count-text align-middle">Anarchy</td>
                         <td id="pveAN" class="align-middle text-left"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/86ef7fd7c087c434a16089602e2c00de.jpg" width="30" height="30"></th>
+                        <td class="count-text align-middle">Malfeasance</td>
+                        <td id="gambitMalf" class="align-middle text-left"></td>
                     </tr>
                 </tbody>
             </table>
