@@ -18,11 +18,9 @@
         clan.unresolvedMemberNames = [];
         clan.membersWithLuna = 0;
         clan.membersWithNF = 0;
-        clan.membersWithMalf = 0;
         clan.membersWithMountaintop = 0;
         clan.membersWithRecluse = 0;
         clan.membersWithRB = 0;
-        clan.membersWithThorn = 0;
         clan.membersWithLQ = 0;
         clan.membersWithOXY = 0;
         clan.membersWithWEN = 0;
@@ -187,7 +185,6 @@ function checkForSpecialAchievements(memberid) {
             clan.membersWithShadow = clan.membersWithShadow + (data.Response.profileRecords.data.records[1883929036].objectives[0].complete == true ? 1 : 0);
             clan.membersWithNF = clan.membersWithNF + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[3260604717].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithRecluse = clan.membersWithRecluse + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[2335550020].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
-            clan.membersWithMalf = clan.membersWithMalf + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1660030045].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithMountaintop = clan.membersWithMountaintop + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[4047371119].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithRevoker = clan.membersWithRevoker + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[3066162258].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithRB = clan.membersWithRB + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1111219481].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
@@ -197,7 +194,6 @@ function checkForSpecialAchievements(memberid) {
             clan.membersWithBN = clan.membersWithBN + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1666039008].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithDEL = clan.membersWithDEL + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1639266456].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithHush = clan.membersWithHush + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1670904512].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
-            clan.membersWithThorn = clan.membersWithThorn + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[4009683574].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             $.each(data.Response.characterRecords.data, function(index, value) {
                 if (typeof value.records[599626507] !== "undefined" && value.records[599626507].objectives[0].progress) {
                     clan.membersWithLuna = clan.membersWithLuna + 1;
@@ -251,7 +247,6 @@ function outputClanData(clanobject) {
     $("#pvpNFs").html(clanobject.membersWithNF);
     $("#pvpMT").html(clanobject.membersWithMountaintop);
     $("#pvpRec").html(clanobject.membersWithRecluse);
-    $("#pvpThorn").html(clanobject.membersWithThorn);
     $("#pvpRevoker").html(clanobject.membersWithRevoker);
     $("#pvpRB").html(clanobject.membersWithRB);
     $("#trialsFlawless").html(clanobject.membersFlawless.toLocaleString("en"));
@@ -280,7 +275,6 @@ function outputClanData(clanobject) {
     $("#gambitAoO").html(clanobject.gambitAoO.toLocaleString("en"));
     $("#gambitOverkillmonger").html(clanobject.gambitOverkillmonger.toLocaleString("en"));
     $("#gambitNSD").html(clanobject.gambitNSD.toLocaleString("en"));
-    $("#gambitMalfs").html(clanobject.membersWithMalf);
     $("#sealChronicler").html(clanobject.membersWithChronicler);
     $("#sealCursebreaker").html(clanobject.membersWithCursebreaker);
     $("#sealDredgen").html(clanobject.membersWithDredgen);
@@ -308,7 +302,7 @@ function openTab(btn, tabName) {
         <button id="tablink2" class="tablinks">Crucible <img src="assets/img/bungie_icons/crucible.png" width="50px" height="50px" class="greylogo" style="float: right; margin:-10px 0 -10px 0;"></button>
         <button id="tablink3" class="tablinks">Medals <img src="assets/img/bungie_icons/medals.png" width="50px" height="50px" class="greylogo" style="float: right; margin:-10px 0 -10px 0;"></button>
         <button id="tablink4" class="tablinks">Gambit <img src="assets/img/bungie_icons/gambit.png" width="50px" height="50px" class="greylogo" style="float: right; margin:-10px 0 -10px 0;"></button>
-        <button id="tablink5" class="tablinks">Collectibles <img src="assets/img/bungie_icons/gambit.png" width="50px" height="50px" class="greylogo" style="float: right; margin:-10px 0 -10px 0;"></button>
+        <button id="tablink5" class="tablinks">Pinnacles </button>
         <button id="tablink6" class="tablinks">Seals </button>
         <div class="spinner">
             <div class="cubelegend"><span id="membercounter"></span> members</div>
@@ -615,16 +609,6 @@ function openTab(btn, tabName) {
                         <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/dfac5b867e558fc6b4acc167a97556eb.jpg" width="30" height="30"></th>
                         <td class="count-text align-middle">Hush</td>
                         <td id="pveHush" class="align-middle text-left"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/3e518a2eb8ba6888ba723866af55ce8b.jpg" width="30" height="30"></th>
-                        <td class="count-text align-middle">Thorn</td>
-                        <td id="pvpThorn" class="align-middle text-left"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/86ef7fd7c087c434a16089602e2c00de.jpg" width="30" height="30"></th>
-                        <td class="count-text align-middle">Malfeasance</td>
-                        <td id="gambitMalfs" class="align-middle text-left">0</td>
                     </tr>
                 </tbody>
             </table>
