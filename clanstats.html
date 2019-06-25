@@ -204,7 +204,7 @@ function checkForSpecialAchievements(memberid) {
             clan.membersWithAN = clan.membersWithAN + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[2220014607].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithMalf = clan.membersWithMalf + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1660030045].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithHush = clan.membersWithHush + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1670904512].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
-            clan.membersWithLWSparrow = clan.membersWithLWSparrow + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1469913804].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
+            //clan.membersWithLWSparrow = clan.membersWithLWSparrow + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1469913804].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             $.each(data.Response.characterRecords.data, function(index, value) {
                 if (typeof value.records[599626507] !== "undefined" && value.records[599626507].objectives[0].progress) {
                     clan.membersWithLuna = clan.membersWithLuna + 1;
