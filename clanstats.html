@@ -95,6 +95,9 @@ $(document).ready(function() {
     $("#tablink6").click(function() {
         openTab("tablink6", "t6")
     });
+    $("#tablink7").click(function() {
+        openTab("tablink7", "t7")
+    });
     $("#tablink1").click();
     $.ajax({
         url: "https://www.bungie.net/Platform/GroupV2/1801684/Members/",
@@ -303,7 +306,8 @@ function openTab(btn, tabName) {
         <button id="tablink3" class="tablinks">Medals <img src="assets/img/bungie_icons/medals.png" width="50px" height="50px" class="greylogo" style="float: right; margin:-10px 0 -10px 0;"></button>
         <button id="tablink4" class="tablinks">Gambit <img src="assets/img/bungie_icons/gambit.png" width="50px" height="50px" class="greylogo" style="float: right; margin:-10px 0 -10px 0;"></button>
         <button id="tablink5" class="tablinks">Pinnacles </button>
-        <button id="tablink6" class="tablinks">Seals </button>
+        <button id="tablink6" class="tablinks">Rare Exotics </button>
+        <button id="tablink7" class="tablinks">Seals </button>
         <div class="spinner">
             <div class="cubelegend"><span id="membercounter"></span> members</div>
             <div class="sk-folding-cube">
@@ -546,7 +550,7 @@ function openTab(btn, tabName) {
             </table>
         </div>
     </div>
-     <div id="t5" class="tabcontent">
+    <div id="t5" class="tabcontent">
         <div class="table-responsive-sm src">
             <table class="table table-sm">
                 <tbody>
@@ -614,7 +618,20 @@ function openTab(btn, tabName) {
             </table>
         </div>
     </div>
-    <div id="t6" class="tabcontent">
+     <div id="t6" class="tabcontent">
+        <div class="table-responsive-sm src">
+            <table class="table table-sm">
+                <tbody>
+                    <tr>
+                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/ca86c130898a90ed19a0a317df8ab389.jpg" width="30" height="30"></th>
+                        <td class="count-text align-middle">Luna's Howl</td>
+                        <td id="pvpLunas" class="align-middle text-left"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="t7" class="tabcontent">
         <div class="table-responsive-sm src">
             <table class="table table-sm">
                 <tbody>
