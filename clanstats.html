@@ -87,6 +87,9 @@ $(document).ready(function() {
     $("#tablink5").click(function() {
         openTab("tablink5", "t5")
     });
+    $("#tablink6").click(function() {
+        openTab("tablink6", "t6")
+    });
     $("#tablink1").click();
     $.ajax({
         url: "https://www.bungie.net/Platform/GroupV2/1801684/Members/",
@@ -284,7 +287,8 @@ function openTab(btn, tabName) {
         <button id="tablink2" class="tablinks">Crucible <img src="assets/img/bungie_icons/crucible.png" width="50px" height="50px" class="greylogo" style="float: right; margin:-10px 0 -10px 0;"></button>
         <button id="tablink3" class="tablinks">Medals <img src="assets/img/bungie_icons/medals.png" width="50px" height="50px" class="greylogo" style="float: right; margin:-10px 0 -10px 0;"></button>
         <button id="tablink4" class="tablinks">Gambit <img src="assets/img/bungie_icons/gambit.png" width="50px" height="50px" class="greylogo" style="float: right; margin:-10px 0 -10px 0;"></button>
-        <button id="tablink5" class="tablinks">Seals </button>
+        <button id="tablink5" class="tablinks">Weapons <img src="assets/img/bungie_icons/gambit.png" width="50px" height="50px" class="greylogo" style="float: right; margin:-10px 0 -10px 0;"></button>
+        <button id="tablink6" class="tablinks">Seals </button>
         <div class="spinner">
             <div class="cubelegend"><span id="membercounter"></span> members</div>
             <div class="sk-folding-cube">
@@ -396,36 +400,6 @@ function openTab(btn, tabName) {
                         <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/1f5e4a3cfeaca5fd6465ffd15b81ffa6.jpg" width="30" height="30" class="whitelogo"></th>
                         <td class="count-text align-middle">Flawless Runs</td>
                         <td id="trialsFlawless" class="align-middle text-left"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/3e518a2eb8ba6888ba723866af55ce8b.jpg" width="30" height="30"></th>
-                        <td class="count-text align-middle">Thorn</td>
-                        <td id="pvpThorn" class="align-middle text-left"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/ca86c130898a90ed19a0a317df8ab389.jpg" width="30" height="30"></th>
-                        <td class="count-text align-middle">Luna's Howl</td>
-                        <td id="pvpLunas" class="align-middle text-left"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/5098b108ad602dc6f003a332e9f74c27.jpg" width="30" height="30"></th>
-                        <td class="count-text align-middle">Not Forgotten</td>
-                        <td id="pvpNFs" class="align-middle text-left"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/b372c65f81ad2d49196a6cec4e07704d.jpg" width="30" height="30"></th>
-                        <td class="count-text align-middle">Mountaintop</td>
-                        <td id="pvpMT" class="align-middle text-left"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/8f5bedcac2559d153f6df266d9f4d04b.jpg" width="30" height="30"></th>
-                        <td class="count-text align-middle">The Recluse</td>
-                        <td id="pvpRec" class="align-middle text-left"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/929777eec5d64e8d26742bb2bf2ed63b.jpg" width="30" height="30"></th>
-                        <td class="count-text align-middle">Revoker</td>
-                        <td id="pvpRevoker" class="align-middle text-left"></td>
                     </tr>
                 </tbody>
             </table>
@@ -539,11 +513,6 @@ function openTab(btn, tabName) {
                         <td id="gambitMotesDenied" class="align-middle text-left"></td>
                     </tr>
                     <tr>
-                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/86ef7fd7c087c434a16089602e2c00de.jpg" width="30" height="30"></th>
-                        <td class="count-text align-middle">Malfeasance</td>
-                        <td id="gambitMalfs" class="align-middle text-left">0</td>
-                    </tr>
-                    <tr>
                         <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/dd4c221d0c0ede4e568850cf0e73edc7.png" width="30" height="30"></th>
                         <td class="count-text align-middle">Army of One</td>
                         <td id="gambitAoO" class="align-middle text-left"></td>
@@ -562,7 +531,50 @@ function openTab(btn, tabName) {
             </table>
         </div>
     </div>
-    <div id="t5" class="tabcontent">
+     <div id="t5" class="tabcontent">
+        <div class="table-responsive-sm src">
+            <table class="table table-sm">
+                <tbody>
+                    <tr>
+                        <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/3e518a2eb8ba6888ba723866af55ce8b.jpg" width="30" height="30"></th>
+                        <td class="count-text align-middle">Thorn</td>
+                        <td id="pvpThorn" class="align-middle text-left"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/ca86c130898a90ed19a0a317df8ab389.jpg" width="30" height="30"></th>
+                        <td class="count-text align-middle">Luna's Howl</td>
+                        <td id="pvpLunas" class="align-middle text-left"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/5098b108ad602dc6f003a332e9f74c27.jpg" width="30" height="30"></th>
+                        <td class="count-text align-middle">Not Forgotten</td>
+                        <td id="pvpNFs" class="align-middle text-left"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/b372c65f81ad2d49196a6cec4e07704d.jpg" width="30" height="30"></th>
+                        <td class="count-text align-middle">Mountaintop</td>
+                        <td id="pvpMT" class="align-middle text-left"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/8f5bedcac2559d153f6df266d9f4d04b.jpg" width="30" height="30"></th>
+                        <td class="count-text align-middle">The Recluse</td>
+                        <td id="pvpRec" class="align-middle text-left"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/929777eec5d64e8d26742bb2bf2ed63b.jpg" width="30" height="30"></th>
+                        <td class="count-text align-middle">Revoker</td>
+                        <td id="pvpRevoker" class="align-middle text-left"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/86ef7fd7c087c434a16089602e2c00de.jpg" width="30" height="30"></th>
+                        <td class="count-text align-middle">Malfeasance</td>
+                        <td id="gambitMalfs" class="align-middle text-left">0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="t6" class="tabcontent">
         <div class="table-responsive-sm src">
             <table class="table table-sm">
                 <tbody>
