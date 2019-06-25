@@ -27,6 +27,7 @@
         clan.membersWithBN = 0;
         clan.membersWithDEL = 0;
         clan.membersWithHush = 0;
+        clan.membersWithOneKay = 0;
         clan.membersWithRevoker = 0;
         clan.membersSoloThrone = 0;
         clan.membersFlawless = 0;
@@ -196,6 +197,7 @@ function checkForSpecialAchievements(memberid) {
             clan.membersWithWEN = clan.membersWithWEN + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[3830703103].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithBN = clan.membersWithBN + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1666039008].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithDEL = clan.membersWithDEL + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1639266456].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
+            clan.membersWithOneKay = clan.membersWithOneKay + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[199171385].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithHush = clan.membersWithHush + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1670904512].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             $.each(data.Response.characterRecords.data, function(index, value) {
                 if (typeof value.records[599626507] !== "undefined" && value.records[599626507].objectives[0].progress) {
@@ -268,6 +270,7 @@ function outputClanData(clanobject) {
     $("#pveBN").html(clanobject.membersWithBN);
     $("#pveDEL").html(clanobject.membersWithDEL);
     $("#pveHush").html(clanobject.membersWithHush);
+    $("#pveonekay").html(clanobject.membersWithOneKay);
     $("#gambitSeconds").html(convertSeconds(clanobject.gambitSeconds));
     $("#gambitWins").html(clanobject.gambitWins.toLocaleString("en"));
     $("#gambitInvadingKills").html(clanobject.gambitInvadingKills.toLocaleString("en"));
@@ -623,9 +626,9 @@ function openTab(btn, tabName) {
             <table class="table table-sm">
                 <tbody>
                     <tr>
-                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/ca86c130898a90ed19a0a317df8ab389.jpg" width="30" height="30"></th>
-                        <td class="count-text align-middle">Luna's Howl</td>
-                        <td id="pvpLunas" class="align-middle text-left"></td>
+                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/0421f2a3fdff6fd946f7e20951b08876.jpg" width="30" height="30"></th>
+                        <td class="count-text align-middle">One Thousand Voices</td>
+                        <td id="pveonekay" class="align-middle text-left"></td>
                     </tr>
                 </tbody>
             </table>
