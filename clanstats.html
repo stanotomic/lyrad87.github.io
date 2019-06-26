@@ -36,6 +36,7 @@
         clan.membersWithAOT = 0;
         clan.membersWithTH = 0;
         clan.membersWithTR = 0;
+        clan.membersWithTLW = 0;
         clan.membersSoloThrone = 0;
         clan.membersFlawless = 0;
         clan.membersWithChronicler = 0;
@@ -214,6 +215,7 @@ function checkForSpecialAchievements(memberid) {
             clan.membersWithAOT = clan.membersWithAOT + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1903459810].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithTH = clan.membersWithTH + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[4009683574].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithTR = clan.membersWithTR + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1763840761].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
+            clan.membersWithTLW = clan.membersWithTLW + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[3074058273].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             
             $.each(data.Response.characterCollectibles.data, function(index, value) {
                 if ((jQuery.inArray(value.collectibles[1469913804].state, aquiredCollectibleStateValues) !== -1)) {
@@ -293,6 +295,7 @@ function outputClanData(clanobject) {
     $("#pveAOT").html(clanobject.membersWithAOT);
     $("#pveTH").html(clanobject.membersWithTH);
     $("#pveTR").html(clanobject.membersWithTR);
+    $("#pveTLW").html(clanobject.membersWithTLW);
     $("#gambitSeconds").html(convertSeconds(clanobject.gambitSeconds));
     $("#gambitWins").html(clanobject.gambitWins.toLocaleString("en"));
     $("#gambitInvadingKills").html(clanobject.gambitInvadingKills.toLocaleString("en"));
@@ -667,6 +670,11 @@ function openTab(btn, tabName) {
                         <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/3e518a2eb8ba6888ba723866af55ce8b.jpg" width="30" height="30"></th>
                         <td class="count-text align-middle">Thorn</td>
                         <td id="pveTH" class="align-middle text-left"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/f7ca2e7dfde0f38ead5ce1c36176603f.jpg" width="30" height="30"></th>
+                        <td class="count-text align-middle">The Last Word</td>
+                        <td id="pveTLW" class="align-middle text-left"></td>
                     </tr>
                     <tr>
                         <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/dadddaaa66c1dd3d450dd758345af389.jpg" width="30" height="30"></th>
