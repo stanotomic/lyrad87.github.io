@@ -208,14 +208,11 @@ function checkForSpecialAchievements(memberid) {
             clan.membersWithMalf = clan.membersWithMalf + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1660030045].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithHush = clan.membersWithHush + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1670904512].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithTAR = clan.membersWithTAR + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[2329697053].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
+            clan.membersWithAOT = clan.membersWithAOT + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1903459810].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             
             $.each(data.Response.characterCollectibles.data, function(index, value) {
                 if ((jQuery.inArray(value.collectibles[1469913804].state, aquiredCollectibleStateValues) !== -1)) {
                     clan.membersWithLWS = clan.membersWithLWS + 1;
-                    return false
-                };
-                if ((jQuery.inArray(value.collectibles[1903459810].state, aquiredCollectibleStateValues) !== -1)) {
-                    clan.membersWithAOT = clan.membersWithAOT + 1;
                     return false
                 }
             });
