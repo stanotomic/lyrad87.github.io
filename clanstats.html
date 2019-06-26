@@ -65,6 +65,7 @@
         CharStatsDataLocations.pveSeconds = "Response.allPvE.allTime.secondsPlayed.basic.value";
         CharStatsDataLocations.raidsCleared = "Response.raid.allTime.activitiesCleared.basic.value";
         CharStatsDataLocations.gambitSeconds = "Response.allPvECompetitive.allTime.secondsPlayed.basic.value";
+        CharStatsDataLocations.gambitWon = "Response.allPvECompetitive.allTime.activitiesWon.basic.value";
         CharStatsDataLocations.gambitAoO = "Response.allPvECompetitive.allTime.medals_pvecomp_medal_invader_kill_four.basic.value";
         CharStatsDataLocations.gambitOverkillmonger = "Response.allPvECompetitive.allTime.medals_pvecomp_medal_overkillmonger.basic.value";
 $(document).ready(function() {
@@ -262,6 +263,7 @@ function outputClanData(clanobject) {
     $("#pveOP").html(clanobject.membersWithOP);
     $("#pveScrap").html(clanobject.membersWithScrap);
     $("#gambitSeconds").html(convertSeconds(clanobject.gambitSeconds));
+    $("#gambitWon").html(clanobject.gambitWon.toLocaleString("en"));
     $("#gambitAoO").html(clanobject.gambitAoO.toLocaleString("en"));
     $("#gambitOverkillmonger").html(clanobject.gambitOverkillmonger.toLocaleString("en"));
     $("#gambitMalf").html(clanobject.membersWithMalf);
@@ -338,6 +340,11 @@ function openTab(btn, tabName) {
                         <td id="raidClears" class="align-middle text-left"></td>
                     </tr>
                     <tr>
+                        <th scope="row" class="align-middle text-center"><img src="assets/img/bungie_icons/gambit.png" width="35" height="35" class="whitelogo"></th>
+                        <td class="count-text align-middle">PvEvP Matches Won</td>
+                        <td id="gambitWon" class="align-middle text-left"></td>
+                    </tr>
+                    <tr>
                         <th scope="row" class="align-middle text-center"><img src="assets/img/bungie_icons/crucible.png" width="35" height="35" class="whitelogo"></th>
                         <td class="count-text align-middle">PvP Matches Won</td>
                         <td id="pvpWon" class="align-middle text-left"></td>
@@ -396,14 +403,14 @@ function openTab(btn, tabName) {
                         <td id="pveOP" class="align-middle text-left"></td>
                     </tr>
                     <tr>
-                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/16080557373919bf6ab606214045544d.jpg" width="35" height="35"></th>
-                        <td class="count-text align-middle">SCRAP CF-717-91</td>
-                        <td id="pveScrap" class="align-middle text-left"></td>
-                    </tr>
-                    <tr>
                         <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/86ef7fd7c087c434a16089602e2c00de.jpg" width="35" height="35"></th>
                         <td class="count-text align-middle">Malfeasance</td>
                         <td id="gambitMalf" class="align-middle text-left"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/16080557373919bf6ab606214045544d.jpg" width="35" height="35"></th>
+                        <td class="count-text align-middle">SCRAP CF-717-91</td>
+                        <td id="pveScrap" class="align-middle text-left"></td>
                     </tr>
                     <tr>
                         <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/1fdad47579f1ac76e77524a3c9ef2e09.jpg" width="35" height="35"></th>
