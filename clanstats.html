@@ -39,6 +39,7 @@
         clan.membersWithTLW = 0;
         clan.membersWithIB = 0;
         clan.membersWithOP = 0;
+        clan.membersWithScrap = 0;
         clan.membersSoloThrone = 0;
         clan.membersFlawless = 0;
         clan.membersWithChronicler = 0;
@@ -192,6 +193,7 @@ function checkForSpecialAchievements(memberid) {
             clan.membersWithTLW = clan.membersWithTLW + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[3074058273].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithIB = clan.membersWithIB + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[24541428].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithOP = clan.membersWithOP + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[2500286745].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
+            clan.membersWithScrap = clan.membersWithScrap + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1840126886].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             
             $.each(data.Response.characterCollectibles.data, function(index, value) {
                 if ((jQuery.inArray(value.collectibles[1469913804].state, aquiredCollectibleStateValues) !== -1)) {
@@ -258,6 +260,7 @@ function outputClanData(clanobject) {
     $("#pveTLW").html(clanobject.membersWithTLW);
     $("#pveIB").html(clanobject.membersWithIB);
     $("#pveOP").html(clanobject.membersWithOP);
+    $("#pveScrap").html(clanobject.membersWithScrap);
     $("#gambitSeconds").html(convertSeconds(clanobject.gambitSeconds));
     $("#gambitAoO").html(clanobject.gambitAoO.toLocaleString("en"));
     $("#gambitOverkillmonger").html(clanobject.gambitOverkillmonger.toLocaleString("en"));
@@ -391,6 +394,11 @@ function openTab(btn, tabName) {
                         <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/65e4839c3750bcefbcb595dc6b7ee38a.jpg" width="35" height="35"></th>
                         <td class="count-text align-middle">Outbreak Perfected</td>
                         <td id="pveOP" class="align-middle text-left"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/16080557373919bf6ab606214045544d.jpg" width="35" height="35"></th>
+                        <td class="count-text align-middle">SCRAP CF-717-91</td>
+                        <td id="pveScrap" class="align-middle text-left"></td>
                     </tr>
                     <tr>
                         <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/86ef7fd7c087c434a16089602e2c00de.jpg" width="35" height="35"></th>
