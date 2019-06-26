@@ -51,23 +51,14 @@
         clan.membersWithShadow = 0;
         var CharStatsDataLocations = {};
         CharStatsDataLocations.pvpKills = "Response.allPvP.allTime.kills.basic.value";
-        CharStatsDataLocations.pvpAssists = "Response.allPvP.allTime.assists.basic.value";
-        CharStatsDataLocations.pvpKD = "Response.allPvP.allTime.killsDeathsRatio.basic.value";
         CharStatsDataLocations.pvpWon = "Response.allPvP.allTime.activitiesWon.basic.value";
-        CharStatsDataLocations.pvpDeaths = "Response.allPvP.allTime.deaths.basic.value";
         CharStatsDataLocations.pvpSeconds = "Response.allPvP.allTime.secondsPlayed.basic.value";
         CharStatsDataLocations.pvpWROOMs = "Response.allPvP.allTime.medalStreakAbsurd.basic.value";
         CharStatsDataLocations.pvpUndefeats = "Response.allPvP.allTime.medalMatchUndefeated.basic.value";
         CharStatsDataLocations.pvpInvincible = "Response.allPvP.allTime.medalShowdownUndefeated.basic.value";
-        CharStatsDataLocations.pvpComeback = "Response.allPvP.allTime.medalMatchComeback.basic.value";
-        CharStatsDataLocations.pvpDoubles = "Response.allPvP.allTime.medalMulti2x.basic.value";
-        CharStatsDataLocations.pvpLightsOut = "Response.allPvP.allTime.medalMulti4x.basic.value";
         CharStatsDataLocations.pvpAnnihilation = "Response.allPvP.allTime.medalMultiEntireTeam.basic.value";
         CharStatsDataLocations.pvpSeven = "Response.allPvP.allTime.medalStreak7x.basic.value";
         CharStatsDataLocations.pvpGhost = "Response.allPvP.allTime.Medals_pvp_medal_streak_no_damage.basic.value";
-        CharStatsDataLocations.pvpRuthless = "Response.allPvP.allTime.medalStreak5x.basic.value";
-        CharStatsDataLocations.pvpFightMe = "Response.allPvP.allTime.medalMatchMostDamage.basic.value";
-        CharStatsDataLocations.pvpNSFMF = "Response.allPvP.allTime.medalSuperShutdown.basic.value";
         CharStatsDataLocations.pveSeconds = "Response.allPvE.allTime.secondsPlayed.basic.value";
         CharStatsDataLocations.raidsCleared = "Response.raid.allTime.activitiesCleared.basic.value";
         CharStatsDataLocations.gambitSeconds = "Response.allPvECompetitive.allTime.secondsPlayed.basic.value";
@@ -236,14 +227,9 @@ function outputClanData(clanobject) {
     $("#pvpUndefeats").html(clanobject.pvpUndefeats.toLocaleString("en"));
     $("#pvpInvincible").html(clanobject.pvpInvincible.toLocaleString("en"));
     $("#pvpComeback").html(clanobject.pvpComeback.toLocaleString("en"));
-    $("#pvpDoubles").html(clanobject.pvpDoubles.toLocaleString("en"));
-    $("#pvpLightsOut").html(clanobject.pvpLightsOut.toLocaleString("en"));
     $("#pvpAnnihilation").html(clanobject.pvpAnnihilation.toLocaleString("en"));
     $("#pvpSeven").html(clanobject.pvpSeven.toLocaleString("en"));
     $("#pvpGhost").html(clanobject.pvpGhost.toLocaleString("en"));
-    $("#pvpRuthless").html(clanobject.pvpRuthless.toLocaleString("en"));
-    $("#pvpFightMe").html(clanobject.pvpFightMe.toLocaleString("en"));
-    $("#pvpNSFMF").html(clanobject.pvpNSFMF.toLocaleString("en"));
     $("#pvpLunas").html(clanobject.membersWithLuna);
     $("#pvpNFs").html(clanobject.membersWithNF);
     $("#pvpMT").html(clanobject.membersWithMountaintop);
@@ -449,36 +435,6 @@ function openTab(btn, tabName) {
                         <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/be709754feb404b9901845b272a70ddb.png" width="35" height="35"></th>
                         <td class="count-text align-middle">Seventh Column</td>
                         <td id="pvpSeven" class="align-middle text-left"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_m5bee79e64764fa4c94d795848d4362e6.png" width="35" height="35"></th>
-                        <td class="count-text align-middle">Double Play</td>
-                        <td id="pvpDoubles" class="align-middle text-left"></td>
-                    </tr>
-                    <tr>
-                        <th ope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_mdbab442edbc7e7ecd6a56f5ac1b1dd47.png" width="35" height="35"></th>
-                        <td class="count-text align-middle">Ruthless</td>
-                        <td id="pvpRuthless" class="align-middle text-left"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_ma60aa3835852cc63462a8539e9543419.png" width="35" height="35"></th>
-                        <td class="count-text align-middle">Lights Out</td>
-                        <td id="pvpLightsOut" class="align-middle text-left"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_mee5acb046145e887d1e7698fa0171603.png" width="35" height="35"></th>
-                        <td class="count-text align-middle">From the Jaws of Defeat</td>
-                        <td id="pvpComeback" class="align-middle text-left"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_me582cbac24c4cecd6f728afc67f882f9.png" width="35" height="35"></th>
-                        <td class="count-text align-middle">Fight Me!</td>
-                        <td id="pvpFightMe" class="align-middle text-left"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/icon_m164efd3b6b3104df99c3b86a6522f68b.png" width="35" height="35"></th>
-                        <td class="count-text align-middle">Not So Fast, My Friend</td>
-                        <td id="pvpNSFMF" class="align-middle text-left"></td>
                     </tr>
                     <tr>
                         <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/dd4c221d0c0ede4e568850cf0e73edc7.png" width="35" height="35"></th>
