@@ -214,6 +214,10 @@ function checkForSpecialAchievements(memberid) {
                     clan.membersWithLWS = clan.membersWithLWS + 1;
                     return false
                 }
+                if ((jQuery.inArray(value.collectibles[1903459810].state, aquiredCollectibleStateValues) !== -1)) {
+                    clan.membersWithAOT = clan.membersWithAOT + 1;
+                    return false
+                }
             });
             outputClanData(clan)
         }
