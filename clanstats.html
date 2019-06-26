@@ -213,7 +213,7 @@ function checkForSpecialAchievements(memberid) {
                 if ((jQuery.inArray(value.collectibles[1469913804].state, aquiredCollectibleStateValues) !== -1)) {
                     clan.membersWithLWS = clan.membersWithLWS + 1;
                     return false
-                }
+                };
                 if ((jQuery.inArray(value.collectibles[1903459810].state, aquiredCollectibleStateValues) !== -1)) {
                     clan.membersWithAOT = clan.membersWithAOT + 1;
                     return false
@@ -328,7 +328,7 @@ function openTab(btn, tabName) {
         <button id="tablink3" class="tablinks">Medals <img src="assets/img/bungie_icons/medals.png" width="50px" height="50px" class="greylogo" style="float: right; margin:-10px 0 -10px 0;"></button>
         <button id="tablink4" class="tablinks">Gambit <img src="assets/img/bungie_icons/gambit.png" width="50px" height="50px" class="greylogo" style="float: right; margin:-10px 0 -10px 0;"></button>
         <button id="tablink5" class="tablinks">Pinnacles </button>
-        <button id="tablink6" class="tablinks">Rare Collectibles </button>
+        <button id="tablink6" class="tablinks">Collectibles </button>
         <button id="tablink7" class="tablinks">Seals </button>
         <div class="spinner">
             <div class="cubelegend"><span id="membercounter"></span> members</div>
