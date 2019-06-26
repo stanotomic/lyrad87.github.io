@@ -68,6 +68,7 @@
         CharStatsDataLocations.gambitWon = "Response.allPvECompetitive.allTime.activitiesWon.basic.value";
         CharStatsDataLocations.gambitAoO = "Response.allPvECompetitive.allTime.medals_pvecomp_medal_invader_kill_four.basic.value";
         CharStatsDataLocations.gambitOverkillmonger = "Response.allPvECompetitive.allTime.medals_pvecomp_medal_overkillmonger.basic.value";
+        CharStatsDataLocations.gambitNSD = "Response.allPvECompetitive.allTime.medals_pvecomp_medal_never_say_die.basic.value";
 $(document).ready(function() {
     $("#tablink1").click(function() {
         openTab("tablink1", "t1")
@@ -171,7 +172,6 @@ function checkForSpecialAchievements(memberid) {
             clan.membersWithBlacksmith = clan.membersWithBlacksmith + (data.Response.profileRecords.data.records[2053985130].objectives[0].complete == true ? 1 : 0);
             clan.membersWithReckoner = clan.membersWithReckoner + (data.Response.profileRecords.data.records[1313291220].objectives[0].complete == true ? 1 : 0);
             clan.membersWithShadow = clan.membersWithShadow + (data.Response.profileRecords.data.records[1883929036].objectives[0].complete == true ? 1 : 0);
-
             clan.membersWithLuna = clan.membersWithLuna + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[3260604718].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithNF = clan.membersWithNF + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[3260604717].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
             clan.membersWithRecluse = clan.membersWithRecluse + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[2335550020].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
@@ -266,6 +266,7 @@ function outputClanData(clanobject) {
     $("#gambitWon").html(clanobject.gambitWon.toLocaleString("en"));
     $("#gambitAoO").html(clanobject.gambitAoO.toLocaleString("en"));
     $("#gambitOverkillmonger").html(clanobject.gambitOverkillmonger.toLocaleString("en"));
+    $("#gambitNSD").html(clanobject.gambitNSD.toLocaleString("en"));
     $("#gambitMalf").html(clanobject.membersWithMalf);
     $("#sealChronicler").html(clanobject.membersWithChronicler);
     $("#sealCursebreaker").html(clanobject.membersWithCursebreaker);
@@ -474,6 +475,11 @@ function openTab(btn, tabName) {
                         <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/7c6fc02b234bfb469a465753114ecb00.png" width="35" height="35"></th>
                         <td class="count-text align-middle">Overkillmonger</td>
                         <td id="gambitOverkillmonger" class="align-middle text-left"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/798c8c630cbd8ca95e7139b7c730b205.png" width="30" height="30"></th>
+                        <td class="count-text align-middle">Never Say Die</td>
+                        <td id="gambitNSD" class="align-middle text-left"></td>
                     </tr>
                 </tbody>
             </table>
