@@ -66,6 +66,7 @@
         CharStatsDataLocations.raidsCleared = "Response.raid.allTime.activitiesCleared.basic.value";
         CharStatsDataLocations.gambitSeconds = "Response.allPvECompetitive.allTime.secondsPlayed.basic.value";
         CharStatsDataLocations.gambitWon = "Response.allPvECompetitive.allTime.activitiesWon.basic.value";
+        CharStatsDataLocations.gambitInvadingKills = "Response.allPvECompetitive.allTime.invasionKills.basic.value";
         CharStatsDataLocations.gambitAoO = "Response.allPvECompetitive.allTime.medals_pvecomp_medal_invader_kill_four.basic.value";
         CharStatsDataLocations.gambitOverkillmonger = "Response.allPvECompetitive.allTime.medals_pvecomp_medal_overkillmonger.basic.value";
         CharStatsDataLocations.gambitNSD = "Response.allPvECompetitive.allTime.medals_pvecomp_medal_never_say_die.basic.value";
@@ -264,6 +265,7 @@ function outputClanData(clanobject) {
     $("#pveScrap").html(clanobject.membersWithScrap);
     $("#gambitSeconds").html(convertSeconds(clanobject.gambitSeconds));
     $("#gambitWon").html(clanobject.gambitWon.toLocaleString("en"));
+    $("#gambitInvadingKills").html(clanobject.gambitInvadingKills.toLocaleString("en"));
     $("#gambitAoO").html(clanobject.gambitAoO.toLocaleString("en"));
     $("#gambitOverkillmonger").html(clanobject.gambitOverkillmonger.toLocaleString("en"));
     $("#gambitNSD").html(clanobject.gambitNSD.toLocaleString("en"));
@@ -346,9 +348,19 @@ function openTab(btn, tabName) {
                         <td id="gambitWon" class="align-middle text-left"></td>
                     </tr>
                     <tr>
+                        <th scope="row" class="align-middle text-center"><img src="assets/img/bungie_icons/invade.png" width="35" height="35" class="whitelogo"></th>
+                        <td class="count-text align-middle">Kills As Invader</td>
+                        <td id="gambitInvadingKills" class="align-middle text-left"></td>
+                    </tr>
+                    <tr>
                         <th scope="row" class="align-middle text-center"><img src="assets/img/bungie_icons/crucible.png" width="35" height="35" class="whitelogo"></th>
                         <td class="count-text align-middle">PvP Matches Won</td>
                         <td id="pvpWon" class="align-middle text-left"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="align-middle text-center"><img src="assets/img/bungie_icons/crucible.png" width="35" height="35" class="whitelogo"></th>
+                        <td class="count-text align-middle">PvP Kills</td>
+                        <td id="pvpKills" class="align-middle text-left"></td>
                     </tr>
                     <tr>
                         <th scope="row" class="align-middle text-center"><img src="https://www.bungie.net/common/destiny2_content/icons/1f5e4a3cfeaca5fd6465ffd15b81ffa6.jpg" width="35" height="35" class="whitelogo"></th>
