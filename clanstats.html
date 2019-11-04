@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/darkly/bootstrap.min.css" rel="stylesheet">
@@ -52,6 +53,24 @@
         clan.membersWithReckoner = 0;
         clan.membersWithShadow = 0;
         clan.membersWithMMXIX = 0;
+        clan.pvpKills = 0;
+        clan.pvpWon = 0;
+        clan.pvpSeconds = 0;
+        clan.pvpWROOMs = 0;
+        clan.pvpUndefeats = 0;
+        clan.pvpInvincible = 0;
+        clan.pvpAnnihilation = 0;
+        clan.pvpIMTFY = 0;
+        clan.pvpSeven = 0;
+        clan.pvpGhost = 0;
+        clan.pveSeconds = 0;
+        clan.raidsCleared = 0;
+        clan.gambitSeconds = 0;
+        clan.gambitWon = 0;
+        clan.gambitInvadingKills  = 0;
+        clan.gambitAoO = 0;
+        clan.gambitOverkillmonger = 0;
+        clan.gambitNSD = 0;                  
         var CharStatsDataLocations = {};
         CharStatsDataLocations.pvpKills = "Response.allPvP.allTime.kills.basic.value";
         CharStatsDataLocations.pvpWon = "Response.allPvP.allTime.activitiesWon.basic.value";
@@ -175,35 +194,44 @@ function checkForSpecialAchievements(memberid) {
             clan.membersWithReckoner = clan.membersWithReckoner + (data.Response.profileRecords.data.records[1313291220].objectives[0].complete == true ? 1 : 0);
             clan.membersWithShadow = clan.membersWithShadow + (data.Response.profileRecords.data.records[1883929036].objectives[0].complete == true ? 1 : 0);
             //clan.membersWithMMXIX = clan.membersWithMMXIX + (data.Response.profileRecords.data.records[2254764897].objectives[0].complete == true ? 1 : 0);
-            clan.membersWithLuna = clan.membersWithLuna + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[3260604718].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
-            clan.membersWithNF = clan.membersWithNF + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[3260604717].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
-            clan.membersWithRecluse = clan.membersWithRecluse + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[2335550020].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
-            clan.membersWithMountaintop = clan.membersWithMountaintop + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[4047371119].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
-            clan.membersWithRevoker = clan.membersWithRevoker + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[3066162258].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
-            clan.membersWithRB = clan.membersWithRB + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1111219481].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
-            clan.membersWithLQ = clan.membersWithLQ + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[3810740723].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
-            clan.membersWithOXY = clan.membersWithOXY + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[543982652].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
-            clan.membersWithWEN = clan.membersWithWEN + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[3830703103].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
-            clan.membersWithBN = clan.membersWithBN + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1666039008].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
-            clan.membersWithDEL = clan.membersWithDEL + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1639266456].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
-            clan.membersWithOneKay = clan.membersWithOneKay + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[199171385].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
-            clan.membersWithAN = clan.membersWithAN + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[2220014607].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
-            clan.membersWithMalf = clan.membersWithMalf + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1660030045].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
-            clan.membersWithHush = clan.membersWithHush + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1670904512].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
-            clan.membersWithTAR = clan.membersWithTAR + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[2329697053].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
-            clan.membersWithAOT = clan.membersWithAOT + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1903459810].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
-            clan.membersWithTH = clan.membersWithTH + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[4009683574].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
-            clan.membersWithTR = clan.membersWithTR + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1763840761].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
-            clan.membersWithTLW = clan.membersWithTLW + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[3074058273].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
-            clan.membersWithIB = clan.membersWithIB + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[24541428].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
-            clan.membersWithOP = clan.membersWithOP + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[2500286745].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
-            clan.membersWithScrap = clan.membersWithScrap + (jQuery.inArray(data.Response.profileCollectibles.data.collectibles[1840126886].state, aquiredCollectibleStateValues) !== -1 ? 1 : 0);
+            
+            clan.membersWithNF += data.Response.profileCollectibles.data.collectibles[3260604717].state % 2 === 0 ? 1 : 0;
+            clan.membersWithLuna += data.Response.profileCollectibles.data.collectibles[3260604718].state % 2 === 0 ? 1 : 0;
+            clan.membersWithRecluse += data.Response.profileCollectibles.data.collectibles[2335550020].state % 2 === 0 ? 1 : 0;
+            clan.membersWithMountaintop += data.Response.profileCollectibles.data.collectibles[4047371119].state % 2 === 0 ? 1 : 0;
+            clan.membersWithRevoker += data.Response.profileCollectibles.data.collectibles[3066162258].state % 2 === 0 ? 1 : 0;
+            clan.membersWithRB += data.Response.profileCollectibles.data.collectibles[1111219481].state % 2 === 0 ? 1 : 0;
+            clan.membersWithLQ += data.Response.profileCollectibles.data.collectibles[3810740723].state % 2 === 0 ? 1 : 0;
+            clan.membersWithOXY += data.Response.profileCollectibles.data.collectibles[543982652].state % 2 === 0 ? 1 : 0;
+            clan.membersWithWEN += data.Response.profileCollectibles.data.collectibles[3830703103].state % 2 === 0 ? 1 : 0;
+            clan.membersWithBN += data.Response.profileCollectibles.data.collectibles[1666039008].state % 2 === 0 ? 1 : 0;
+            clan.membersWithDEL += data.Response.profileCollectibles.data.collectibles[1639266456].state % 2 === 0 ? 1 : 0;
+            clan.membersWithOneKay += data.Response.profileCollectibles.data.collectibles[199171385].state % 2 === 0 ? 1 : 0;
+            clan.membersWithAN += data.Response.profileCollectibles.data.collectibles[2220014607].state % 2 === 0 ? 1 : 0;
+            clan.membersWithMalf += data.Response.profileCollectibles.data.collectibles[1660030045].state % 2 === 0 ? 1 : 0;
+            clan.membersWithHush += data.Response.profileCollectibles.data.collectibles[1670904512].state % 2 === 0 ? 1 : 0;
+            clan.membersWithTAR += data.Response.profileCollectibles.data.collectibles[2329697053].state % 2 === 0 ? 1 : 0;
+            clan.membersWithAOT += data.Response.profileCollectibles.data.collectibles[1903459810].state % 2 === 0 ? 1 : 0;
+            clan.membersWithTH += data.Response.profileCollectibles.data.collectibles[4009683574].state % 2 === 0 ? 1 : 0;
+            clan.membersWithTR += data.Response.profileCollectibles.data.collectibles[1763840761].state % 2 === 0 ? 1 : 0;
+            clan.membersWithTLW += data.Response.profileCollectibles.data.collectibles[3074058273].state % 2 === 0 ? 1 : 0;
+            clan.membersWithIB += data.Response.profileCollectibles.data.collectibles[24541428].state % 2 === 0 ? 1 : 0;
+            clan.membersWithOP += data.Response.profileCollectibles.data.collectibles[2500286745].state % 2 === 0 ? 1 : 0;
+            clan.membersWithScrap += data.Response.profileCollectibles.data.collectibles[1840126886].state % 2 === 0 ? 1 : 0;
+            clan.membersWithLWS += data.Response.profileCollectibles.data.collectibles[1469913804].state % 2 === 0 ? 1 : 0;
             
             $.each(data.Response.characterCollectibles.data, function(index, value) {
-                if ((jQuery.inArray(value.collectibles[1469913804].state, aquiredCollectibleStateValues) !== -1)) {
-                    clan.membersWithLWS = clan.membersWithLWS + 1;
-                    return false
-                }
+                                                                                                                   
+                                                                  
+                                
+                 
+               
+             
+             //nearly everything moved to profileCollectibles, just leaving this here in case we need it later again
+             //   if (value.collectibles[1469913804].state % 2 === 0) {
+             //       clan.membersWithLWS = clan.membersWithLWS + 1;
+             //       return false
+             //   }
             });
             outputClanData(clan)
         }
@@ -229,6 +257,7 @@ function convertSeconds(s) {
 }
 
 function outputClanData(clanobject) {
+    
     $("#pvpKills").html(clanobject.pvpKills.toLocaleString("en"));
     $("#pvpWon").html(clanobject.pvpWon.toLocaleString("en"));
     $("#pvpSeconds").html(convertSeconds(clanobject.pvpSeconds));
@@ -323,12 +352,12 @@ function openTab(btn, tabName) {
                     <tr>
                         <th scope="row" class="align-middle text-center"><img src="assets/img/bungie_icons/nightfall.png" width="35" height="35" class="whitelogo"></th>
                         <td class="count-text align-middle">Nightfall Completions</td>
-                        <td class="align-middle text-left">6362</td>
+                        <td class="align-middle text-left">5711</td>
                     </tr>
                     <tr>
                         <th scope="row" class="align-middle text-center"><img src="assets/img/bungie_icons/nightfall.png" width="35" height="35" class="whitelogo"></th>
                         <td class="count-text align-middle">Highest Nightfall Score</td>
-                        <td class="align-middle text-left">450,149</td>
+                        <td class="align-middle text-left">523,345</td>
                     </tr>
                     <tr>
                         <th scope="row" class="align-middle text-center"><img src="assets/img/bungie_icons/raid.png" width="35" height="35" class="whitelogo"></th>
@@ -394,12 +423,12 @@ function openTab(btn, tabName) {
                         <td id="pveTAR" class="align-middle text-left"></td>
                     </tr>
                     <tr>
-                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/3e518a2eb8ba6888ba723866af55ce8b.jpg" width="35" height="35"></th>
+                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/6481ca96bae1de44456ec24afb4e4881.jpg" width="35" height="35"></th>
                         <td class="count-text align-middle">Thorn</td>
                         <td id="pveTH" class="align-middle text-left"></td>
                     </tr>
                     <tr>
-                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/f7ca2e7dfde0f38ead5ce1c36176603f.jpg" width="35" height="35"></th>
+                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/371ba66cb82c46cfd1e9cc098fa6371e.jpg" width="35" height="35"></th>
                         <td class="count-text align-middle">The Last Word</td>
                         <td id="pveTLW" class="align-middle text-left"></td>
                     </tr>
@@ -414,7 +443,7 @@ function openTab(btn, tabName) {
                         <td id="pveTR" class="align-middle text-left"></td>
                     </tr>
                     <tr>
-                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/65e4839c3750bcefbcb595dc6b7ee38a.jpg" width="35" height="35"></th>
+                        <th scope="row" class="align-middle text-center"><img src="https://bungie.net/common/destiny2_content/icons/aaf735125499d47af36c5f4028ead11c.jpg" width="35" height="35"></th>
                         <td class="count-text align-middle">Outbreak Perfected</td>
                         <td id="pveOP" class="align-middle text-left"></td>
                     </tr>
